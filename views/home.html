@@ -11,10 +11,27 @@
             Las 8 dimensiones que explican tu forma de pensar, sentir y actuar.
         </p>
         
-        <div style="margin-top: var(--space-10);">
+        <div style="margin-top: var(--space-10); display: flex; flex-direction: column; gap: var(--space-4); align-items: center;">
+            <!-- Botón Principal -->
             <a href="#test" class="btn btn-primary btn-lg glow">
+                <i class="fa-solid fa-compass" style="margin-right: 8px;"></i>
                 Comenzar mi viaje interior
             </a>
+            
+            <!-- Botón de Instalación PWA (Oculto por defecto) -->
+            <button id="btn-install-app" 
+                    class="btn btn-secondary" 
+                    style="display: none; margin-top: var(--space-4);"
+                    onclick="triggerInstall()">
+                <i class="fa-solid fa-download" style="margin-right: 8px;"></i>
+                Instalar aplicación
+            </button>
+            
+            <!-- Mensaje alternativo para iOS (Oculto por defecto) -->
+            <p id="ios-install-hint" style="display: none; color: var(--color-gray-light); font-size: var(--text-xs); margin-top: var(--space-2); text-align: center;">
+                <i class="fa-brands fa-apple"></i> En iPhone: usa el botón <i class="fa-solid fa-square-arrow-up"></i> Compartir y elige "Añadir a pantalla de inicio"
+            </p>
+        </div>
         </div>
     </header>
 

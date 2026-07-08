@@ -1,9 +1,9 @@
 /**
  * Service Worker - Cache First Strategy
- * Para funcionamiento offline
+ * Versión: 2.0 - Solo archivos existentes
  */
 
-const CACHE_NAME = 'por-que-soy-asi-v2'; // ← Versión actualizada
+const CACHE_NAME = 'por-que-soy-asi-v3';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -32,18 +32,16 @@ const ASSETS_TO_CACHE = [
     '/views/profile.html'
 ];
 
-// ... resto del sw.js igual
-
 // Instalar Service Worker
 self.addEventListener('install', (event) => {
     event.waitUntil(
         caches.open(CACHE_NAME)
             .then((cache) => {
-                console.log('Opened cache');
+                console.log('✅ Cache abierto:', CACHE_NAME);
                 return cache.addAll(ASSETS_TO_CACHE);
             })
             .catch((error) => {
-                console.error('Cache install failed:', error);
+                console.error('❌ Error en cache install:', error);
             })
     );
 });
@@ -55,7 +53,7 @@ self.addEventListener('activate', (event) => {
             return Promise.all(
                 cacheNames.map((cacheName) => {
                     if (cacheName !== CACHE_NAME) {
-                        console.log('Deleting old cache:', cacheName);
+                        console.log('🗑️ Eliminando cache antigua:', cacheName);
                         return caches.delete(cacheName);
                     }
                 })
@@ -69,20 +67,16 @@ self.addEventListener('fetch', (event) => {
     event.respondWith(
         caches.match(event.request)
             .then((response) => {
-                // Cache hit - return response
                 if (response) {
                     return response;
                 }
                 
-                // Cache miss - fetch from network
                 return fetch(event.request).then(
                     (response) => {
-                        // Check if valid response
                         if (!response || response.status !== 200 || response.type !== 'basic') {
                             return response;
                         }
 
-                        // Clone the response
                         const responseToCache = response.clone();
 
                         caches.open(CACHE_NAME)
@@ -95,7 +89,6 @@ self.addEventListener('fetch', (event) => {
                 );
             })
             .catch(() => {
-                // If both cache and network fail, show offline page
                 return caches.match('/index.html');
             })
     );
