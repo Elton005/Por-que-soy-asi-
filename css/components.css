@@ -1,0 +1,637 @@
+/* ============================================
+   COMPONENTES UI
+   Diseño premium alineado con la carátula
+   ============================================ */
+
+/* =========================================
+   BOTONES
+   ========================================= */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-2);
+    padding: var(--space-3) var(--space-6);
+    font-family: var(--font-sans);
+    font-size: var(--text-base);
+    font-weight: 500;
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* Botón Primario - Dorado */
+.btn-primary {
+    background: var(--gradient-gold);
+    color: var(--color-black-deep);
+    box-shadow: var(--shadow-md);
+}
+
+.btn-primary:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-gold-strong);
+}
+
+.btn-primary:active:not(:disabled) {
+    transform: translateY(0);
+}
+
+/* Botón Secundario - Outline Dorado */
+.btn-secondary {
+    background: transparent;
+    color: var(--color-gold-primary);
+    border: 2px solid var(--color-gold-primary);
+}
+
+.btn-secondary:hover:not(:disabled) {
+    background: var(--color-gold-primary);
+    color: var(--color-black-deep);
+    box-shadow: var(--shadow-gold);
+}
+
+/* Botón Terciario - Ghost */
+.btn-ghost {
+    background: transparent;
+    color: var(--color-white-soft);
+}
+
+.btn-ghost:hover:not(:disabled) {
+    background: var(--color-black-light);
+    color: var(--color-gold-light);
+}
+
+/* Botón Grande */
+.btn-lg {
+    padding: var(--space-4) var(--space-8);
+    font-size: var(--text-lg);
+    border-radius: var(--radius-xl);
+}
+
+/* Botón Pequeño */
+.btn-sm {
+    padding: var(--space-2) var(--space-4);
+    font-size: var(--text-sm);
+}
+
+/* =========================================
+   CARDS
+   ========================================= */
+
+.card {
+    background: var(--color-black-soft);
+    border: 1px solid var(--color-gray-dark);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    transition: all var(--transition-base);
+}
+
+.card:hover {
+    border-color: var(--color-gold-dark);
+    box-shadow: var(--shadow-lg);
+    transform: translateY(-4px);
+}
+
+.card-gold {
+    border: 1px solid var(--color-gold-dark);
+    background: linear-gradient(135deg, var(--color-black-soft) 0%, var(--color-blue-mystic) 100%);
+}
+
+.card-gold:hover {
+    box-shadow: var(--shadow-gold);
+}
+
+/* =========================================
+   PROGRESS BAR
+   ========================================= */
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background: var(--color-black-light);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
+    transition: width var(--transition-slow);
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* =========================================
+   INPUTS Y FORMULARIOS
+   ========================================= */
+
+.input-group {
+    margin-bottom: var(--space-4);
+}
+
+.input-label {
+    display: block;
+    font-size: var(--text-sm);
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-2);
+    font-weight: 500;
+}
+
+.input {
+    width: 100%;
+    padding: var(--space-3) var(--space-4);
+    background: var(--color-black-light);
+    border: 1px solid var(--color-gray-dark);
+    border-radius: var(--radius-md);
+    color: var(--color-white);
+    font-size: var(--text-base);
+    transition: all var(--transition-fast);
+}
+
+.input:focus {
+    border-color: var(--color-gold-primary);
+    box-shadow: 0 0 0 3px rgba(201, 169, 97, 0.1);
+    outline: none;
+}
+
+.input::placeholder {
+    color: var(--color-gray-medium);
+}
+
+.textarea {
+    min-height: 120px;
+    resize: vertical;
+    font-family: var(--font-sans);
+}
+
+/* =========================================
+   RADIO BUTTONS CUSTOM (para opciones de test)
+   ========================================= */
+
+.radio-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+}
+
+.radio-option {
+    position: relative;
+    padding: var(--space-4);
+    background: var(--color-black-light);
+    border: 2px solid var(--color-gray-dark);
+    border-radius: var(--radius-lg);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.radio-option:hover {
+    border-color: var(--color-gold-dark);
+    background: var(--color-black-soft);
+}
+
+.radio-option.selected {
+    border-color: var(--color-gold-primary);
+    background: rgba(201, 169, 97, 0.1);
+    box-shadow: var(--shadow-gold);
+}
+
+.radio-option input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.radio-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    color: var(--color-white-soft);
+    font-size: var(--text-base);
+    cursor: pointer;
+}
+
+.radio-indicator {
+    width: 20px;
+    height: 20px;
+    border: 2px solid var(--color-gray-dark);
+    border-radius: var(--radius-full);
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.radio-option.selected .radio-indicator {
+    border-color: var(--color-gold-primary);
+}
+
+.radio-option.selected .radio-indicator::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 10px;
+    height: 10px;
+    background: var(--color-gold-primary);
+    border-radius: var(--radius-full);
+}
+
+/* =========================================
+   BADGES Y TAGS
+   ========================================= */
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    padding: var(--space-1) var(--space-3);
+    font-size: var(--text-xs);
+    font-weight: 600;
+    border-radius: var(--radius-full);
+    background: var(--color-gold-primary);
+    color: var(--color-black-deep);
+}
+
+.badge-outline {
+    background: transparent;
+    border: 1px solid var(--color-gold-primary);
+    color: var(--color-gold-primary);
+}
+
+/* =========================================
+   DIVIDERS ORNAMENTALES
+   ========================================= */
+
+.ornament-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-4);
+    margin: var(--space-8) 0;
+    color: var(--color-gold-primary);
+}
+
+.ornament-divider::before,
+.ornament-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--color-gold-dark), transparent);
+}
+
+.ornament-symbol {
+    font-size: var(--text-xl);
+    color: var(--color-gold-primary);
+}
+
+/* =========================================
+   AVATARS Y PERFILES
+   ========================================= */
+
+.avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: var(--radius-full);
+    background: var(--gradient-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: var(--color-black-deep);
+    font-size: var(--text-lg);
+}
+
+.avatar-lg {
+    width: 80px;
+    height: 80px;
+    font-size: var(--text-3xl);
+}
+
+/* =========================================
+   TOAST NOTIFICATIONS
+   ========================================= */
+
+.toast-container {
+    position: fixed;
+    top: var(--space-4);
+    right: var(--space-4);
+    z-index: var(--z-toast);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.toast {
+    background: var(--color-black-soft);
+    border: 1px solid var(--color-gold-dark);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    box-shadow: var(--shadow-xl);
+    animation: slideInRight var(--transition-base);
+    max-width: 320px;
+}
+
+.toast.success {
+    border-left: 4px solid #10B981;
+}
+
+.toast.error {
+    border-left: 4px solid #EF4444;
+}
+
+.toast.info {
+    border-left: 4px solid var(--color-gold-primary);
+}
+
+@keyframes slideInRight {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   MODAL
+   ========================================= */
+
+.modal-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(8px);
+    z-index: var(--z-modal-backdrop);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+    animation: fadeIn var(--transition-base);
+}
+
+.modal {
+    background: var(--color-black-soft);
+    border: 1px solid var(--color-gold-dark);
+    border-radius: var(--radius-xl);
+    padding: var(--space-8);
+    max-width: 500px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: var(--shadow-xl);
+    animation: scaleIn var(--transition-base);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0.9);
+        opacity: 0;
+    }
+    to {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+/* =========================================
+   LOADING SPINNER
+   ========================================= */
+
+.spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--color-black-light);
+    border-top-color: var(--color-gold-primary);
+    border-radius: var(--radius-full);
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* =========================================
+   RESPONSIVE COMPONENTS
+   ========================================= */
+
+@media (min-width: 768px) {
+    .radio-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .radio-option {
+        flex: 1;
+        min-width: 200px;
+    }
+}
+
+/* =========================================
+   TOAST ICONOS (sin Font Awesome)
+   ========================================= */
+
+.toast {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+}
+
+.toast-icon {
+    width: 24px;
+    height: 24px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: var(--text-sm);
+    flex-shrink: 0;
+}
+
+.toast.success .toast-icon {
+    background: #10B981;
+    color: white;
+}
+
+.toast.error .toast-icon {
+    background: #EF4444;
+    color: white;
+}
+
+.toast.info .toast-icon {
+    background: var(--color-gold-primary);
+    color: var(--color-black-deep);
+}
+
+.toast-message {
+    flex: 1;
+    color: var(--color-white-soft);
+    font-size: var(--text-sm);
+}
+
+/* =========================================
+   FONT AWESOME INTEGRATION
+   ========================================= */
+
+.nav-icon, 
+.sidebar-icon,
+.toast-icon i {
+    color: inherit; /* Hereda el color del contenedor (dorado en active, gris en normal) */
+    font-size: inherit;
+    display: inline-block;
+    transition: transform var(--transition-fast);
+}
+
+/* Efecto sutil al hacer hover en la navegación */
+.nav-item:hover .nav-icon,
+.sidebar-item:hover .sidebar-icon {
+    transform: scale(1.1);
+}
+
+/* Ajuste específico para toasts */
+.toast-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+}
+
+/* =========================================
+   DIARIO - DÍAS Y ENTRADAS
+   ========================================= */
+
+.days-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+    gap: var(--space-3);
+    margin-bottom: var(--space-8);
+}
+
+.day-card {
+    cursor: pointer;
+    position: relative;
+    text-align: center;
+    padding: var(--space-4);
+    transition: all var(--transition-base);
+}
+
+.day-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-gold-primary);
+    box-shadow: var(--shadow-gold);
+}
+
+.day-card.completed {
+    border-color: var(--color-gold-primary);
+    background: linear-gradient(135deg, var(--color-black-soft) 0%, var(--color-blue-mystic) 100%);
+}
+
+.day-number {
+    font-size: var(--text-2xl);
+    color: var(--color-gold-primary);
+    font-family: var(--font-serif-primary);
+    display: block;
+}
+
+.day-title {
+    font-size: var(--text-xs);
+    color: var(--color-gray-light);
+    margin-top: var(--space-2);
+}
+
+.day-check {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    color: var(--color-gold-primary);
+    font-size: var(--text-lg);
+    font-weight: bold;
+}
+
+.day-header {
+    margin-bottom: var(--space-4);
+}
+
+.day-badge {
+    display: inline-block;
+    padding: var(--space-1) var(--space-3);
+    background: var(--color-gold-primary);
+    color: var(--color-black-deep);
+    border-radius: var(--radius-full);
+    font-size: var(--text-xs);
+    font-weight: 600;
+}
+
+.diary-question {
+    margin-bottom: var(--space-6);
+}
+
+/* =========================================
+   TEST - WRAPPER
+   ========================================= */
+
+.test-wrapper {
+    min-height: 60vh;
+}
+
+/* =========================================
+   FONT AWESOME INTEGRATION (BLINDADA)
+   ========================================= */
+
+.nav-icon, 
+.sidebar-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    transition: transform var(--transition-fast);
+}
+
+.nav-item.active .nav-icon,
+.sidebar-item.active .sidebar-icon {
+    color: var(--color-gold-primary) !important;
+}
+
+.nav-item:hover .nav-icon,
+.sidebar-item:hover .sidebar-icon {
+    transform: scale(1.15);
+}
+
+.toast-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    margin-right: var(--space-2);
+    color: inherit;
+}
+
+.toast-icon i {
+    display: block;
+}

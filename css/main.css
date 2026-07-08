@@ -1,0 +1,683 @@
+/* ============================================
+   LAYOUT PRINCIPAL
+   Mobile-First Architecture
+   ============================================ */
+
+/* =========================================
+   APP CONTAINER
+   ========================================= */
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: calc(var(--bottom-nav-height) + var(--space-4));
+}
+
+/* =========================================
+   LOADING SCREEN
+   ========================================= */
+
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    background: var(--color-black-deep);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: calc(var(--z-modal) + 10); /* Mayor que el sidebar */
+    transition: opacity var(--transition-slow), visibility var(--transition-slow);
+}
+
+.loading-screen.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-content {
+    text-align: center;
+    padding: var(--space-8);
+}
+
+.loading-logo {
+    margin-bottom: var(--space-6);
+}
+
+.loading-logo .ornament {
+    font-size: var(--text-5xl);
+    color: var(--color-gold-primary);
+    display: block;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.loading-title {
+    font-family: var(--font-serif-primary);
+    font-size: var(--text-3xl);
+    color: var(--color-gold-primary);
+    margin-bottom: var(--space-2);
+    letter-spacing: 0.05em;
+}
+
+.loading-subtitle {
+    font-size: var(--text-sm);
+    color: var(--color-gray-light);
+    margin-bottom: var(--space-6);
+}
+
+.loading-bar {
+    width: 200px;
+    height: 3px;
+    background: var(--color-black-soft);
+    border-radius: var(--radius-full);
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loading-progress {
+    height: 100%;
+    background: var(--gradient-gold);
+    width: 0%;
+    animation: loading 2s ease-in-out infinite;
+}
+
+@keyframes loading {
+    0% { width: 0%; margin-left: 0; }
+    50% { width: 70%; margin-left: 0; }
+    100% { width: 0%; margin-left: 100%; }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(0.95); }
+}
+
+/* =========================================
+   MAIN CONTENT AREA
+   ========================================= */
+
+.main-content {
+    flex: 1;
+    padding: var(--space-6) var(--space-4);
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    width: 100%;
+}
+
+.section {
+    margin-bottom: var(--space-12);
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInUp var(--transition-slow) forwards;
+}
+
+@keyframes fadeInUp {
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* =========================================
+   BOTTOM NAVIGATION
+   ========================================= */
+
+.bottom-nav {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
+    background: var(--color-black-primary);
+    border-top: 1px solid var(--color-gold-dark);
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+    padding-top: var(--space-2);
+    padding-bottom: var(--safe-area-bottom);
+    z-index: var(--z-fixed);
+    box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bottom-nav.hidden {
+    display: none;
+}
+
+.nav-item {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-2);
+    color: var(--color-gray-medium);
+    transition: all var(--transition-fast);
+    font-size: var(--text-xs);
+    gap: var(--space-1);
+}
+
+.nav-item.active {
+    color: var(--color-gold-primary);
+}
+
+.nav-item:hover {
+    color: var(--color-gold-light);
+}
+
+.nav-icon {
+    font-size: var(--text-xl);
+    margin-bottom: var(--space-1);
+}
+
+/* =========================================
+   INSTALL PROMPT
+   ========================================= */
+
+.install-prompt {
+    position: fixed;
+    bottom: calc(var(--bottom-nav-height) + var(--space-4));
+    left: var(--space-4);
+    right: var(--space-4);
+    background: var(--color-black-soft);
+    border: 1px solid var(--color-gold-dark);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    z-index: var(--z-popover);
+    box-shadow: var(--shadow-xl);
+    animation: slideUp var(--transition-base);
+}
+
+.install-prompt.hidden {
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.install-content {
+    position: relative;
+    text-align: center;
+}
+
+.install-close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    font-size: var(--text-xl);
+    color: var(--color-gray-light);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+}
+
+.install-close:hover {
+    background: var(--color-black-light);
+    color: var(--color-white);
+}
+
+.install-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-3);
+}
+
+.install-content h3 {
+    font-family: var(--font-serif-primary);
+    color: var(--color-gold-primary);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-lg);
+}
+
+.install-content p {
+    color: var(--color-gray-light);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.btn-install {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+}
+
+/* =========================================
+   RESPONSIVE - TABLET
+   ========================================= */
+
+@media (min-width: 768px) {
+    .main-content {
+        padding: var(--space-10) var(--space-8);
+    }
+    
+    .bottom-nav {
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+}
+
+/* =========================================
+   RESPONSIVE - DESKTOP
+   ========================================= */
+
+@media (min-width: 1024px) {
+    .app-container {
+        padding-bottom: 0;
+    }
+    
+    .bottom-nav {
+        display: none;
+    }
+    
+    .main-content {
+        max-width: var(--max-width-wide);
+        padding: var(--space-12) var(--space-16);
+    }
+    
+    /* Desktop navigation would go here */
+}
+
+/* =========================================
+   UTILIDADES DE LAYOUT
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.container-wide {
+    max-width: var(--max-width-wide);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.hidden { display: none !important; }
+
+/* =========================================
+   TOP NAVIGATION (DESKTOP)
+   ========================================= */
+
+.top-nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-gold-dark);
+    z-index: var(--z-fixed);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.top-nav-container {
+    width: 100%;
+    max-width: var(--max-width-wide);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 var(--space-8);
+}
+
+.top-nav-logo {
+    font-family: var(--font-serif-primary);
+    color: var(--color-gold-primary);
+    font-size: var(--text-lg);
+    letter-spacing: 0.05em;
+}
+
+.top-nav-links {
+    display: flex;
+    gap: var(--space-8);
+}
+
+.top-nav-links .nav-item {
+    color: var(--color-gray-light);
+    font-size: var(--text-sm);
+    font-weight: 500;
+    padding: var(--space-2) 0;
+    position: relative;
+    transition: color var(--transition-fast);
+}
+
+.top-nav-links .nav-item:hover {
+    color: var(--color-gold-light);
+}
+
+.top-nav-links .nav-item.active {
+    color: var(--color-gold-primary);
+}
+
+/* Línea dorada animada debajo del link activo */
+.top-nav-links .nav-item.active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--gradient-gold);
+    animation: slideInLeft var(--transition-base);
+}
+
+/* Ajustar el padding del app-container cuando hay top-nav */
+@media (min-width: 1024px) {
+    .top-nav {
+        display: flex; /* Mostrar en PC */
+    }
+    
+    .bottom-nav {
+        display: none; /* Ocultar bottom nav en PC */
+    }
+
+    .app-container {
+        padding-top: var(--header-height);
+        padding-bottom: 0;
+    }
+
+    .install-prompt {
+        bottom: var(--space-8);
+        right: var(--space-8);
+        left: auto;
+        max-width: 350px;
+    }
+}
+
+/* =========================================
+   SIDEBAR LATERAL (DESKTOP)
+   ========================================= */
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, var(--color-black-deep) 0%, var(--color-black-primary) 100%);
+    border-right: 1px solid var(--color-gold-dark);
+    display: flex;
+    flex-direction: column;
+    padding: var(--space-8) var(--space-6);
+    z-index: var(--z-fixed);
+    overflow-y: auto;
+    box-shadow: 4px 0 20px rgba(0, 0, 0, 0.5);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity var(--transition-base), visibility var(--transition-base);
+}
+
+.sidebar.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+/* Header del Sidebar */
+.sidebar-header {
+    margin-bottom: var(--space-10);
+    padding-bottom: var(--space-6);
+    border-bottom: 1px solid var(--color-gold-dark);
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    margin-bottom: var(--space-3);
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-logo:hover {
+    transform: translateX(4px);
+}
+
+.sidebar-logo-icon {
+    font-size: var(--text-2xl);
+    color: var(--color-gold-primary);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.sidebar-logo-text {
+    font-family: var(--font-serif-primary);
+    font-size: var(--text-lg);
+    color: var(--color-gold-primary);
+    letter-spacing: 0.02em;
+    line-height: 1.2;
+}
+
+.sidebar-tagline {
+    font-size: var(--text-xs);
+    color: var(--color-gray-light);
+    font-style: italic;
+    margin: 0;
+}
+
+/* Navegación */
+.sidebar-nav {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.sidebar-item {
+    display: flex;
+    align-items: center;
+    gap: var(--space-4);
+    padding: var(--space-4) var(--space-4);
+    border-radius: var(--radius-lg);
+    color: var(--color-gray-light);
+    font-size: var(--text-base);
+    font-weight: 500;
+    transition: all var(--transition-fast);
+    position: relative;
+    overflow: hidden;
+}
+
+.sidebar-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--gradient-gold);
+    transform: scaleY(0);
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-item:hover {
+    background: var(--color-black-light);
+    color: var(--color-gold-light);
+    transform: translateX(4px);
+}
+
+.sidebar-item.active {
+    background: linear-gradient(90deg, rgba(201, 169, 97, 0.15) 0%, transparent 100%);
+    color: var(--color-gold-primary);
+}
+
+.sidebar-item.active::before {
+    transform: scaleY(1);
+}
+
+.sidebar-icon {
+    font-size: var(--text-xl);
+    width: 24px;
+    text-align: center;
+}
+
+.sidebar-label {
+    flex: 1;
+}
+
+/* Footer del Sidebar */
+.sidebar-footer {
+    margin-top: auto;
+    padding-top: var(--space-6);
+    border-top: 1px solid var(--color-gold-dark);
+    text-align: center;
+}
+
+.sidebar-quote {
+    font-family: var(--font-serif-secondary);
+    font-size: var(--text-xs);
+    color: var(--color-gray-light);
+    font-style: italic;
+    line-height: 1.6;
+    margin: var(--space-4) 0;
+}
+
+.sidebar-authors {
+    font-size: var(--text-xs);
+    color: var(--color-gold-muted);
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* =========================================
+   AJUSTE DEL CONTENIDO PRINCIPAL
+   ========================================= */
+
+.app-container {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-bottom: calc(var(--bottom-nav-height) + var(--space-4));
+    transition: margin-left var(--transition-base);
+}
+
+/* =========================================
+   RESPONSIVE - TABLET (768px - 1199px)
+   Sidebar oculto, bottom nav visible
+   ========================================= */
+
+@media (max-width: 1199px) {
+    .sidebar {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+    
+    .bottom-nav {
+        display: flex;
+        max-width: 600px;
+        left: 50%;
+        transform: translateX(-50%);
+        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+    }
+    
+    .main-content {
+        padding: var(--space-10) var(--space-8);
+    }
+    
+    .install-prompt {
+        bottom: calc(var(--bottom-nav-height) + var(--space-4));
+        right: var(--space-8);
+        left: var(--space-8);
+        max-width: 400px;
+    }
+    
+    .app-container {
+        margin-left: 0;
+    }
+}
+
+/* =========================================
+   RESPONSIVE - DESKTOP (≥1200px)
+   Sidebar visible, bottom nav oculto
+   ========================================= */
+
+@media (min-width: 1200px) {
+    .sidebar {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .bottom-nav {
+        display: none;
+    }
+
+    .app-container {
+        margin-left: 280px;
+        padding-bottom: 0;
+        min-height: 100vh;
+    }
+
+    .main-content {
+        padding: var(--space-12) var(--space-10);
+        max-width: 900px;
+    }
+
+    .install-prompt {
+        bottom: var(--space-8);
+        right: var(--space-8);
+        left: auto;
+        max-width: 380px;
+    }
+}
+
+/* =========================================
+   SCROLLBAR PERSONALIZADO PARA SIDEBAR
+   ========================================= */
+
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-gold-dark);
+    border-radius: var(--radius-full);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-primary);
+}

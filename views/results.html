@@ -1,0 +1,60 @@
+<section class="main-content fade-in-up">
+  <header class="text-center" style="margin-bottom: var(--space-8);">
+    <div class="avatar avatar-lg" style="margin: 0 auto var(--space-4); background: var(--gradient-gold); display: flex; align-items: center; justify-content: center;">
+      <i id="result-icon" class="fa-solid fa-compass" style="font-size: var(--text-4xl); color: var(--color-black-deep);"></i>
+    </div>
+    <h2 class="text-gradient-gold">Tu Mapa de Autoconocimiento</h2>
+    <p style="color: var(--color-gray-light); font-size: var(--text-sm); margin-top: var(--space-2);">
+      Basado en tus respuestas honestas a las 8 dimensiones
+    </p>
+  </header>
+
+  <!-- Perfil Principal -->
+  <article class="card card-gold" style="margin-bottom: var(--space-6);">
+    <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">Perfil Predominante</h3>
+    <h2 id="result-profile-name" class="text-gradient-gold" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Cargando...</h2>
+    <p id="result-description" style="color: var(--color-white-soft); line-height: 1.8;">Espera un momento...</p>
+  </article>
+
+  <!-- Gráfico Radar -->
+  <article class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
+    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center;">Tus 8 Dimensiones</h4>
+    <div id="radar-chart-container" style="width: 100%; max-width: 400px; margin: 0 auto;">
+      <p style="text-align: center; color: var(--color-gray-light);">Generando gráfico...</p>
+    </div>
+  </article>
+
+  <!-- Fortalezas y Puntos Ciegos -->
+  <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-6);">
+    <div class="card">
+      <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">✨ Tus Fortalezas</h4>
+      <ul id="result-strengths" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;">
+        <li>Cargando...</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">🔍 Puntos Ciegos</h4>
+      <ul id="result-blindspots" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;">
+        <li>Cargando...</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Recomendación -->
+  <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-6);">
+    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);"> Recomendación</h4>
+    <p id="result-recommendation" style="color: var(--color-white-soft); font-style: italic; line-height: 1.8;">Cargando...</p>
+  </div>
+
+  <!-- Pregunta de Reflexión -->
+  <div class="card" style="border: 1px dashed var(--color-gold-dark); background: transparent; margin-bottom: var(--space-8);">
+    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">💭 Para reflexionar</h4>
+    <p id="result-reflection-question" style="color: var(--color-white-soft); line-height: 1.8; font-weight: 500;">Cargando...</p>
+  </div>
+
+  <!-- Acciones -->
+  <div style="display: flex; flex-direction: column; gap: var(--space-4);">
+    <a href="#diary" class="btn btn-primary btn-lg" style="width: 100%; text-align: center;">Ir al Diario de 7 Días</a>
+    <button class="btn btn-ghost" id="restart-test-btn" style="width: 100%; text-align: center;">Repetir Evaluación</button>
+  </div>
+</section>
