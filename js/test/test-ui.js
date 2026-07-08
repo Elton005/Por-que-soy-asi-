@@ -16,46 +16,52 @@ const TestUI = {
   },
 
   renderQuestion() {
-    const container = document.getElementById('test-container');
-    if (!container) {
-      console.error('Test container not found');
-      return;
-    }
-    
-    const q = this.questions[this.currentQuestionIndex];
-    const progress = ((this.currentQuestionIndex) / this.questions.length) * 100;
-
-    container.innerHTML = `
-      <section class="main-content fade-in-up">
-        <div class="progress-bar" style="margin-bottom: var(--space-8);">
-          <div class="progress-fill" style="width: ${progress}%"></div>
-        </div>
-        <p style="color: var(--color-gray-light); font-size: var(--text-sm); margin-bottom: var(--space-2);">
-          Pregunta ${this.currentQuestionIndex + 1} de ${this.questions.length}
-        </p>
-        <h2 style="color: var(--color-white); font-size: var(--text-xl); margin-bottom: var(--space-6); line-height: 1.4;">
-          ${q.text}
-        </h2>
-        <div class="radio-group" id="options-container">
-          ${q.options.map((opt, i) => `
-            <label class="radio-option" data-value="${opt.value}">
-              <input type="radio" name="q${q.id}" value="${opt.value}">
-              <span class="radio-indicator"></span>
-              <span class="radio-label">${opt.text}</span>
-            </label>
-          `).join('')}
-        </div>
-        <div style="margin-top: var(--space-10); display: flex; gap: var(--space-4);">
-          ${this.currentQuestionIndex > 0 ? 
-            `<button class="btn btn-ghost" id="prev-btn" style="flex: 1;">Anterior</button>` : 
-            `<div style="flex: 1;"></div>`
-          }
-          <button class="btn btn-primary" id="next-btn" style="flex: 2;" disabled>Siguiente</button>
-        </div>
-      </section>
-    `;
-
-    this.attachEvents();
+      const container = document.getElementById('test-container');
+      if (!container) {
+          console.error('Test container not found');
+          return;
+      }
+      
+      const q = this.questions[this.currentQuestionIndex];
+      const progress = ((this.currentQuestionIndex) / this.questions.length) * 100;
+  
+      container.innerHTML = `
+          <section class="main-content fade-in-up">
+              <div class="progress-bar" style="margin-bottom: var(--space-8);">
+                  <div class="progress-fill" style="width: ${progress}%"></div>
+              </div>
+              <p style="color: var(--color-gray-light); font-size: var(--text-sm); margin-bottom: var(--space-2);">
+                  Pregunta ${this.currentQuestionIndex + 1} de ${this.questions.length}
+              </p>
+              <h2 style="color: var(--color-white); font-size: var(--text-xl); margin-bottom: var(--space-6); line-height: 1.4;">
+                  ${q.text}
+              </h2>
+              <div class="radio-group" id="options-container">
+                  ${q.options.map((opt, i) => `
+                      <label class="radio-option" data-value="${opt.value}">
+                          <input type="radio" name="q${q.id}" value="${opt.value}">
+                          <span class="radio-indicator"></span>
+                          <span class="radio-label">${opt.text}</span>
+                      </label>
+                  `).join('')}
+              </div>
+              <div style="margin-top: var(--space-10); display: flex; gap: var(--space-4);">
+                  ${this.currentQuestionIndex > 0 ? 
+                      `<button class="btn btn-ghost" id="prev-btn" style="flex: 1;">Anterior</button>` : 
+                      `<div style="flex: 1;"></div>`
+                  }
+                  <button class="btn btn-primary" id="next-btn" style="flex: 2;" disabled>Siguiente</button>
+              </div>
+          </section>
+      `;
+  
+      // ✅ SCROLL AL TOP DESPUÉS DE RENDERIZAR
+      window.scrollTo({
+          top: 0,
+          behavior: 'smooth'  // Scroll suave en lugar de instantáneo
+      });
+  
+      this.attachEvents();
   },
 
   attachEvents() {

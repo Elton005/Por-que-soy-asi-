@@ -3,7 +3,7 @@
  * Versión: 2.0 - Solo archivos existentes
  */
 
-const CACHE_NAME = 'por-que-soy-asi-v4';
+const CACHE_NAME = 'por-que-soy-asi-v5';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
