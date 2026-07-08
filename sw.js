@@ -3,7 +3,7 @@
  * Versión: 2.0 - Solo archivos existentes
  */
 
-const CACHE_NAME = 'por-que-soy-asi-v3';
+const CACHE_NAME = 'por-que-soy-asi-v4';
 const ASSETS_TO_CACHE = [
     '/',
     '/index.html',
@@ -29,7 +29,8 @@ const ASSETS_TO_CACHE = [
     '/views/test-question.html',
     '/views/results.html',
     '/views/diary.html',
-    '/views/profile.html'
+    '/views/profile.html',
+    '/assets/icons/icon-512x512.png'
 ];
 
 // Instalar Service Worker

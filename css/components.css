@@ -635,3 +635,61 @@
 .toast-icon i {
     display: block;
 }
+
+/* =========================================
+   PORTADA DEL LIBRO
+   ========================================= */
+
+.book-cover {
+    transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.book-cover:hover {
+    transform: translateY(-8px) rotateY(5deg);
+    box-shadow: 0 30px 80px rgba(201, 169, 97, 0.4);
+}
+
+/* =========================================
+   FOTOS DE AUTORES
+   ========================================= */
+
+.author-photo {
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.author-item:hover .author-photo {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px rgba(201, 169, 97, 0.5);
+}
+
+/* Animación de flotación suave para la portada */
+.book-cover-wrapper {
+    animation: floatGentle 3s ease-in-out infinite;
+}
+
+@keyframes floatGentle {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+/* Efecto hover en la portada */
+.book-cover-wrapper:hover {
+    animation-play-state: paused;
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+}
+
+.book-cover-wrapper:hover .book-cover {
+    box-shadow: 0 12px 35px rgba(201,169,97,0.5);
+}
+
+/* Responsive: ajustar tamaños en móvil */
+@media (max-width: 480px) {
+    .book-cover-wrapper img {
+        width: 70px !important;
+    }
+}

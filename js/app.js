@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Router.addRoute('test/question', () => loadView('test-question'));
     Router.addRoute('test/results', () => loadView('results'));
     Router.addRoute('diary', () => loadView('diary'));
-    Router.addRoute('profile', () => loadView('profile'));
+    Router.addRoute('profile', () => loadView('profile'));  // ← Esta línea debe existir
 
     Router.init();
 
@@ -53,20 +53,30 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 /**
- * Mostrar navegación apropiada
+ * Mostrar navegación apropiada según el dispositivo
+ * Desktop (≥1200px): Sidebar lateral + Header
+ * Tablet/Mobile (<1200px): Bottom nav + Header
  */
 function showAppropriateNavigation() {
     const sidebar = document.getElementById('sidebar');
     const bottomNav = document.getElementById('bottom-nav');
+    const header = document.getElementById('app-header');
     
-    if (!sidebar || !bottomNav) return;
+    if (!sidebar || !bottomNav || !header) return;
+    
+    // El header SIEMPRE está visible
+    header.style.display = 'block';
     
     if (window.innerWidth >= 1200) {
+        // Desktop: mostrar sidebar, ocultar bottom nav
         sidebar.classList.remove('hidden');
         bottomNav.classList.add('hidden');
+        console.log('📱 Desktop: Sidebar + Header visible');
     } else {
-        bottomNav.classList.remove('hidden');
+        // Tablet/Mobile: ocultar sidebar, mostrar bottom nav
         sidebar.classList.add('hidden');
+        bottomNav.classList.remove('hidden');
+        console.log('📱 Mobile/Tablet: Bottom nav + Header visible');
     }
 }
 
@@ -101,7 +111,8 @@ async function loadView(viewName, callback = null) {
             const viewInitMap = {
                 'diary': 'initDiary',
                 'results': 'initResults',
-                'test-question': 'initTestQuestion'
+                'test-question': 'initTestQuestion',
+                'profile': 'initProfile'  // ← Agregar esto
             };
 
             const initFn = viewInitMap[viewName];

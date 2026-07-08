@@ -89,28 +89,38 @@ function initResults() {
 
 /**
  * Renderiza un gráfico radar SVG nativo
+ * @param {Object} dimensionScores - Puntuaciones por dimensión
+ * @param {string} containerId - ID del contenedor (opcional)
  */
-function renderRadarChart(dimensionScores) {
-    const container = document.getElementById('radar-chart-container');
-    if (!container) return;
+/**
+ * Renderiza un gráfico radar SVG nativo con etiquetas en dos líneas
+ */
+function renderRadarChart(dimensionScores, containerId = 'radar-chart-container') {
+    const container = document.getElementById(containerId);
+    if (!container) {
+        console.warn(`⚠️ No se encontró el contenedor #${containerId}`);
+        return;
+    }
 
     const dimensions = [
-        { key: 'temperamento', label: 'Temperamento' },
-        { key: 'frustracion', label: 'Frustración' },
-        { key: 'conflictos', label: 'Conflictos' },
-        { key: 'noVer', label: 'No Ver' },
-        { key: 'noOir', label: 'No Oír' },
-        { key: 'noHablar', label: 'No Hablar' },
-        { key: 'autoconciencia', label: 'Autoconciencia' },
-        { key: 'integracion', label: 'Integración' }
+        { key: 'temperamento', label: 'Temperamento', split: false },
+        { key: 'frustracion', label: 'Frustración', split: false },
+        { key: 'conflictos', label: 'Conflictos', split: true, line1: 'Conf', line2: 'lictos' },
+        { key: 'noVer', label: 'No Ver', split: false },
+        { key: 'noOir', label: 'No Oír', split: false },
+        { key: 'noHablar', label: 'No Hablar', split: false },
+        { key: 'autoconciencia', label: 'Autoconciencia', split: true, line1: 'Auto', line2: 'conciencia' },
+        { key: 'integracion', label: 'Integración', split: false }
     ];
 
-    const size = 320;
+    // ViewBox más grande
+    const size = 450;
     const center = size / 2;
-    const maxRadius = 120;
+    const maxRadius = 140;
     const levels = 4;
     const angleStep = (Math.PI * 2) / dimensions.length;
 
+    // Calcular valores normalizados
     const values = dimensions.map(dim => {
         const scores = dimensionScores[dim.key] || {};
         const total = Object.values(scores).reduce((a, b) => a + b, 0);
@@ -118,23 +128,30 @@ function renderRadarChart(dimensionScores) {
         return total > 0 ? maxScore / total : 0.5;
     });
 
-    let svg = `<svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto;">`;
+    let svg = `<svg viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: auto; max-width: 100%;">`;
     
+    // Grid
     for (let level = 1; level <= levels; level++) {
         const radius = (maxRadius / levels) * level;
         let points = '';
         for (let i = 0; i < dimensions.length; i++) {
             const angle = angleStep * i - Math.PI / 2;
-            points += `${center + radius * Math.cos(angle)},${center + radius * Math.sin(angle)} `;
+            const x = center + radius * Math.cos(angle);
+            const y = center + radius * Math.sin(angle);
+            points += `${x},${y} `;
         }
         svg += `<polygon points="${points}" fill="none" stroke="#C9A961" stroke-width="0.5" opacity="${0.2 + level * 0.1}"/>`;
     }
 
+    // Líneas radiales
     for (let i = 0; i < dimensions.length; i++) {
         const angle = angleStep * i - Math.PI / 2;
-        svg += `<line x1="${center}" y1="${center}" x2="${center + maxRadius * Math.cos(angle)}" y2="${center + maxRadius * Math.sin(angle)}" stroke="#C9A961" stroke-width="0.5" opacity="0.3"/>`;
+        const x = center + maxRadius * Math.cos(angle);
+        const y = center + maxRadius * Math.sin(angle);
+        svg += `<line x1="${center}" y1="${center}" x2="${x}" y2="${y}" stroke="#C9A961" stroke-width="0.5" opacity="0.3"/>`;
     }
 
+    // Área de datos
     let dataPoints = '';
     const pointCoords = [];
     for (let i = 0; i < dimensions.length; i++) {
@@ -146,27 +163,73 @@ function renderRadarChart(dimensionScores) {
         pointCoords.push({ x, y });
     }
     
-    svg += `<defs><radialGradient id="goldGradient"><stop offset="0%" stop-color="#E5D4A1" stop-opacity="0.8"/><stop offset="100%" stop-color="#C9A961" stop-opacity="0.4"/></radialGradient></defs>`;
-    svg += `<polygon points="${dataPoints}" fill="url(#goldGradient)" fill-opacity="0.3" stroke="#E5D4A1" stroke-width="2"/>`;
+    svg += `
+        <defs>
+            <radialGradient id="goldGradient-${containerId}">
+                <stop offset="0%" stop-color="#E5D4A1" stop-opacity="0.8"/>
+                <stop offset="100%" stop-color="#C9A961" stop-opacity="0.4"/>
+            </radialGradient>
+        </defs>
+    `;
+    svg += `<polygon points="${dataPoints}" fill="url(#goldGradient-${containerId})" fill-opacity="0.3" stroke="#E5D4A1" stroke-width="2"/>`;
 
+    // Puntos
     pointCoords.forEach(coord => {
         svg += `<circle cx="${coord.x}" cy="${coord.y}" r="4" fill="#E5D4A1" stroke="#0A0A0F" stroke-width="2"/>`;
     });
 
+    // ✅ Etiquetas con saltos de línea para palabras largas
     dimensions.forEach((dim, i) => {
         const angle = angleStep * i - Math.PI / 2;
-        const labelRadius = maxRadius + 25;
+        const labelRadius = maxRadius + 40;
         const x = center + labelRadius * Math.cos(angle);
         const y = center + labelRadius * Math.sin(angle);
+        
+        // Alineación según posición
         let textAnchor = 'middle';
-        if (Math.cos(angle) > 0.3) textAnchor = 'start';
-        else if (Math.cos(angle) < -0.3) textAnchor = 'end';
-        svg += `<text x="${x}" y="${y}" fill="#E5D4A1" font-size="11" font-family="Inter, sans-serif" text-anchor="${textAnchor}" dominant-baseline="middle">${dim.label}</text>`;
+        if (Math.cos(angle) > 0.5) {
+            textAnchor = 'start';
+        } else if (Math.cos(angle) < -0.5) {
+            textAnchor = 'end';
+        }
+        
+        if (dim.split) {
+            // Palabra dividida en dos líneas con tspan
+            svg += `<text 
+                x="${x}" 
+                y="${y}" 
+                fill="#E5D4A1" 
+                font-size="11" 
+                font-family="Inter, sans-serif" 
+                font-weight="500"
+                text-anchor="${textAnchor}"
+                style="pointer-events: none;">
+                <tspan x="${x}" dy="-6">${dim.line1}</tspan>
+                <tspan x="${x}" dy="14">${dim.line2}</tspan>
+            </text>`;
+        } else {
+            // Etiqueta normal en una línea
+            svg += `<text 
+                x="${x}" 
+                y="${y}" 
+                fill="#E5D4A1" 
+                font-size="11" 
+                font-family="Inter, sans-serif" 
+                font-weight="500"
+                text-anchor="${textAnchor}" 
+                dominant-baseline="middle"
+                style="pointer-events: none;">
+                ${dim.label}
+            </text>`;
+        }
     });
 
     svg += `</svg>`;
     container.innerHTML = svg;
 }
+
+// Hacer global
+window.renderRadarChart = renderRadarChart;
 
 // Hacer globales
 window.initResults = initResults;

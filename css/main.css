@@ -1,10 +1,11 @@
 /* ============================================
    LAYOUT PRINCIPAL
    Mobile-First Architecture
+   Versión consolidada - Sin duplicados
    ============================================ */
 
 /* =========================================
-   APP CONTAINER
+   APP CONTAINER (Única definición)
    ========================================= */
 
 .app-container {
@@ -12,7 +13,9 @@
     display: flex;
     flex-direction: column;
     position: relative;
+    padding-top: calc(var(--header-height) + var(--safe-area-top));
     padding-bottom: calc(var(--bottom-nav-height) + var(--space-4));
+    transition: margin-left var(--transition-base);
 }
 
 /* =========================================
@@ -26,7 +29,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: calc(var(--z-modal) + 10); /* Mayor que el sidebar */
+    z-index: calc(var(--z-modal) + 10);
     transition: opacity var(--transition-slow), visibility var(--transition-slow);
 }
 
@@ -120,7 +123,104 @@
 }
 
 /* =========================================
-   BOTTOM NAVIGATION
+   HEADER SUPERIOR (FIJO)
+   Visible en TODOS los dispositivos
+   ========================================= */
+
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: var(--header-height);
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--color-gold-dark);
+    z-index: calc(var(--z-fixed) + 1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.app-header-content {
+    height: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-4);
+}
+
+.app-header-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-3);
+    flex: 1;
+    min-width: 0;
+}
+
+.app-header-logo {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--gradient-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    box-shadow: 0 0 15px rgba(201, 169, 97, 0.3);
+    overflow: hidden;
+}
+
+.app-header-logo-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: var(--radius-full);
+}
+
+.app-header-text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    overflow: hidden;
+}
+
+.app-header-title {
+    font-family: var(--font-serif-primary);
+    font-size: var(--text-base);
+    color: var(--color-gold-primary);
+    font-weight: 600;
+    line-height: 1.2;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    letter-spacing: 0.02em;
+}
+
+.app-header-subtitle {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-gray-light);
+    font-style: italic;
+    margin: 0;
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.app-header-actions {
+    display: flex;
+    align-items: center;
+    gap: var(--space-2);
+    flex-shrink: 0;
+}
+
+/* =========================================
+   BOTTOM NAVIGATION (MOBILE/TABLET)
    ========================================= */
 
 .bottom-nav {
@@ -128,20 +228,24 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: calc(var(--bottom-nav-height) + var(--safe-area-bottom));
-    background: var(--color-black-primary);
+    height: var(--bottom-nav-height);
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-top: 1px solid var(--color-gold-dark);
     display: flex;
     justify-content: space-around;
-    align-items: flex-start;
-    padding-top: var(--space-2);
-    padding-bottom: var(--safe-area-bottom);
+    align-items: center;
     z-index: var(--z-fixed);
+    padding: 0 var(--space-2);
     box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.5);
+    transition: opacity var(--transition-base);
 }
 
 .bottom-nav.hidden {
-    display: none;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
 }
 
 .nav-item {
@@ -150,15 +254,29 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: var(--space-2);
+    padding: var(--space-2) var(--space-1);
     color: var(--color-gray-medium);
     transition: all var(--transition-fast);
     font-size: var(--text-xs);
     gap: var(--space-1);
+    text-decoration: none;
+    position: relative;
 }
 
 .nav-item.active {
     color: var(--color-gold-primary);
+}
+
+.nav-item.active::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: var(--gradient-gold);
+    border-radius: var(--radius-full);
 }
 
 .nav-item:hover {
@@ -167,263 +285,23 @@
 
 .nav-icon {
     font-size: var(--text-xl);
-    margin-bottom: var(--space-1);
-}
-
-/* =========================================
-   INSTALL PROMPT
-   ========================================= */
-
-.install-prompt {
-    position: fixed;
-    bottom: calc(var(--bottom-nav-height) + var(--space-4));
-    left: var(--space-4);
-    right: var(--space-4);
-    background: var(--color-black-soft);
-    border: 1px solid var(--color-gold-dark);
-    border-radius: var(--radius-xl);
-    padding: var(--space-6);
-    z-index: var(--z-popover);
-    box-shadow: var(--shadow-xl);
-    animation: slideUp var(--transition-base);
-}
-
-.install-prompt.hidden {
-    display: none;
-}
-
-@keyframes slideUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.install-content {
-    position: relative;
-    text-align: center;
-}
-
-.install-close {
-    position: absolute;
-    top: var(--space-2);
-    right: var(--space-2);
-    font-size: var(--text-xl);
-    color: var(--color-gray-light);
-    width: 28px;
-    height: 28px;
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    border-radius: var(--radius-full);
-    transition: all var(--transition-fast);
+    transition: transform var(--transition-fast);
 }
 
-.install-close:hover {
-    background: var(--color-black-light);
-    color: var(--color-white);
+.nav-item:hover .nav-icon {
+    transform: scale(1.15);
 }
 
-.install-icon {
-    font-size: var(--text-4xl);
-    margin-bottom: var(--space-3);
-}
-
-.install-content h3 {
-    font-family: var(--font-serif-primary);
+.nav-item.active .nav-icon {
     color: var(--color-gold-primary);
-    margin-bottom: var(--space-2);
-    font-size: var(--text-lg);
 }
 
-.install-content p {
-    color: var(--color-gray-light);
-    font-size: var(--text-sm);
-    margin-bottom: var(--space-4);
-}
-
-.btn-install {
-    width: 100%;
-    padding: var(--space-3) var(--space-6);
-}
-
-/* =========================================
-   RESPONSIVE - TABLET
-   ========================================= */
-
-@media (min-width: 768px) {
-    .main-content {
-        padding: var(--space-10) var(--space-8);
-    }
-    
-    .bottom-nav {
-        max-width: 600px;
-        left: 50%;
-        transform: translateX(-50%);
-        border-radius: var(--radius-xl) var(--radius-xl) 0 0;
-    }
-}
-
-/* =========================================
-   RESPONSIVE - DESKTOP
-   ========================================= */
-
-@media (min-width: 1024px) {
-    .app-container {
-        padding-bottom: 0;
-    }
-    
-    .bottom-nav {
-        display: none;
-    }
-    
-    .main-content {
-        max-width: var(--max-width-wide);
-        padding: var(--space-12) var(--space-16);
-    }
-    
-    /* Desktop navigation would go here */
-}
-
-/* =========================================
-   UTILIDADES DE LAYOUT
-   ========================================= */
-
-.container {
-    width: 100%;
-    max-width: var(--max-width-content);
-    margin: 0 auto;
-    padding: 0 var(--space-4);
-}
-
-.container-wide {
-    max-width: var(--max-width-wide);
-}
-
-.flex {
-    display: flex;
-}
-
-.flex-col {
-    flex-direction: column;
-}
-
-.items-center {
-    align-items: center;
-}
-
-.justify-center {
-    justify-content: center;
-}
-
-.justify-between {
-    justify-content: space-between;
-}
-
-.gap-2 { gap: var(--space-2); }
-.gap-4 { gap: var(--space-4); }
-.gap-6 { gap: var(--space-6); }
-
-.text-center { text-align: center; }
-.text-left { text-align: left; }
-.text-right { text-align: right; }
-
-.hidden { display: none !important; }
-
-/* =========================================
-   TOP NAVIGATION (DESKTOP)
-   ========================================= */
-
-.top-nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: var(--header-height);
-    background: rgba(10, 10, 15, 0.95);
-    backdrop-filter: blur(10px);
-    border-bottom: 1px solid var(--color-gold-dark);
-    z-index: var(--z-fixed);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.top-nav-container {
-    width: 100%;
-    max-width: var(--max-width-wide);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0 var(--space-8);
-}
-
-.top-nav-logo {
-    font-family: var(--font-serif-primary);
-    color: var(--color-gold-primary);
-    font-size: var(--text-lg);
+.nav-label {
+    font-size: 0.65rem;
     letter-spacing: 0.05em;
-}
-
-.top-nav-links {
-    display: flex;
-    gap: var(--space-8);
-}
-
-.top-nav-links .nav-item {
-    color: var(--color-gray-light);
-    font-size: var(--text-sm);
-    font-weight: 500;
-    padding: var(--space-2) 0;
-    position: relative;
-    transition: color var(--transition-fast);
-}
-
-.top-nav-links .nav-item:hover {
-    color: var(--color-gold-light);
-}
-
-.top-nav-links .nav-item.active {
-    color: var(--color-gold-primary);
-}
-
-/* Línea dorada animada debajo del link activo */
-.top-nav-links .nav-item.active::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 2px;
-    background: var(--gradient-gold);
-    animation: slideInLeft var(--transition-base);
-}
-
-/* Ajustar el padding del app-container cuando hay top-nav */
-@media (min-width: 1024px) {
-    .top-nav {
-        display: flex; /* Mostrar en PC */
-    }
-    
-    .bottom-nav {
-        display: none; /* Ocultar bottom nav en PC */
-    }
-
-    .app-container {
-        padding-top: var(--header-height);
-        padding-bottom: 0;
-    }
-
-    .install-prompt {
-        bottom: var(--space-8);
-        right: var(--space-8);
-        left: auto;
-        max-width: 350px;
-    }
 }
 
 /* =========================================
@@ -495,7 +373,7 @@
     margin: 0;
 }
 
-/* Navegación */
+/* Navegación del Sidebar */
 .sidebar-nav {
     flex: 1;
     display: flex;
@@ -515,6 +393,7 @@
     transition: all var(--transition-fast);
     position: relative;
     overflow: hidden;
+    text-decoration: none;
 }
 
 .sidebar-item::before {
@@ -548,6 +427,18 @@
     font-size: var(--text-xl);
     width: 24px;
     text-align: center;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform var(--transition-fast);
+}
+
+.sidebar-item:hover .sidebar-icon {
+    transform: scale(1.15);
+}
+
+.sidebar-item.active .sidebar-icon {
+    color: var(--color-gold-primary);
 }
 
 .sidebar-label {
@@ -578,58 +469,225 @@
     margin: 0;
 }
 
-/* =========================================
-   AJUSTE DEL CONTENIDO PRINCIPAL
-   ========================================= */
+/* Scrollbar personalizado para sidebar */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
 
-.app-container {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-bottom: calc(var(--bottom-nav-height) + var(--space-4));
-    transition: margin-left var(--transition-base);
+.sidebar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: var(--color-gold-dark);
+    border-radius: var(--radius-full);
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-gold-primary);
 }
 
 /* =========================================
-   RESPONSIVE - TABLET (768px - 1199px)
-   Sidebar oculto, bottom nav visible
+   INSTALL PROMPT
    ========================================= */
 
-@media (max-width: 1199px) {
+.install-prompt {
+    position: fixed;
+    bottom: calc(var(--bottom-nav-height) + var(--space-4));
+    left: var(--space-4);
+    right: var(--space-4);
+    background: var(--color-black-soft);
+    border: 1px solid var(--color-gold-dark);
+    border-radius: var(--radius-xl);
+    padding: var(--space-6);
+    z-index: var(--z-popover);
+    box-shadow: var(--shadow-xl);
+    animation: slideUp var(--transition-base);
+}
+
+.install-prompt.hidden {
+    display: none;
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.install-content {
+    position: relative;
+    text-align: center;
+}
+
+.install-close {
+    position: absolute;
+    top: var(--space-2);
+    right: var(--space-2);
+    font-size: var(--text-xl);
+    color: var(--color-gray-light);
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-full);
+    transition: all var(--transition-fast);
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.install-close:hover {
+    background: var(--color-black-light);
+    color: var(--color-white);
+}
+
+.install-icon {
+    font-size: var(--text-4xl);
+    margin-bottom: var(--space-3);
+}
+
+.install-content h3 {
+    font-family: var(--font-serif-primary);
+    color: var(--color-gold-primary);
+    margin-bottom: var(--space-2);
+    font-size: var(--text-lg);
+}
+
+.install-content p {
+    color: var(--color-gray-light);
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+}
+
+.btn-install {
+    width: 100%;
+    padding: var(--space-3) var(--space-6);
+}
+
+/* =========================================
+   UTILIDADES DE LAYOUT
+   ========================================= */
+
+.container {
+    width: 100%;
+    max-width: var(--max-width-content);
+    margin: 0 auto;
+    padding: 0 var(--space-4);
+}
+
+.container-wide {
+    max-width: var(--max-width-wide);
+}
+
+.flex { display: flex; }
+.flex-col { flex-direction: column; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.justify-between { justify-content: space-between; }
+.gap-2 { gap: var(--space-2); }
+.gap-4 { gap: var(--space-4); }
+.gap-6 { gap: var(--space-6); }
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+.hidden { display: none !important; }
+
+/* =========================================
+   RESPONSIVE - MÓVIL (< 768px)
+   Bottom nav full width, sidebar oculto
+   ========================================= */
+
+@media (max-width: 767px) {
     .sidebar {
         opacity: 0;
         visibility: hidden;
         pointer-events: none;
     }
-    
+
     .bottom-nav {
-        display: flex;
-        max-width: 600px;
+        max-width: 100%;
+        left: 0;
+        right: 0;
+        transform: none;
+        border-radius: 0;
+        padding: 0 var(--space-2);
+    }
+
+    .main-content {
+        padding: var(--space-6) var(--space-4);
+    }
+
+    .app-header-content {
+        padding: 0 var(--space-4);
+    }
+
+    .install-prompt {
+        bottom: calc(var(--bottom-nav-height) + var(--space-4));
+        left: var(--space-4);
+        right: var(--space-4);
+        max-width: calc(100% - var(--space-8));
+    }
+}
+
+/* =========================================
+   RESPONSIVE - TABLET (768px - 1199px)
+   Bottom nav 90% centrado, sidebar oculto
+   ========================================= */
+
+@media (min-width: 768px) and (max-width: 1199px) {
+    .sidebar {
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+    }
+
+    .bottom-nav {
+        max-width: 90%;
         left: 50%;
         transform: translateX(-50%);
         border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+        padding: 0 var(--space-4);
     }
-    
+
     .main-content {
         padding: var(--space-10) var(--space-8);
     }
-    
+
+    .app-header-content {
+        padding: 0 var(--space-6);
+    }
+
+    .app-header-title {
+        font-size: var(--text-lg);
+    }
+
+    .app-header-subtitle {
+        font-size: var(--text-sm);
+    }
+
     .install-prompt {
         bottom: calc(var(--bottom-nav-height) + var(--space-4));
         right: var(--space-8);
         left: var(--space-8);
         max-width: 400px;
     }
-    
+
     .app-container {
         margin-left: 0;
     }
 }
 
 /* =========================================
-   RESPONSIVE - DESKTOP (≥1200px)
+   RESPONSIVE - DESKTOP (≥ 1200px)
    Sidebar visible, bottom nav oculto
+   Header alineado con sidebar
    ========================================= */
 
 @media (min-width: 1200px) {
@@ -637,7 +695,7 @@
         opacity: 1;
         visibility: visible;
     }
-    
+
     .bottom-nav {
         display: none;
     }
@@ -645,7 +703,28 @@
     .app-container {
         margin-left: 280px;
         padding-bottom: 0;
-        min-height: 100vh;
+    }
+
+    .app-header {
+        left: 280px;
+    }
+
+    .app-header-content {
+        padding: 0 var(--space-8);
+        max-width: calc(100% - 280px);
+    }
+
+    .app-header-title {
+        font-size: var(--text-lg);
+    }
+
+    .app-header-subtitle {
+        font-size: var(--text-sm);
+    }
+
+    .app-header-logo {
+        width: 44px;
+        height: 44px;
     }
 
     .main-content {
@@ -662,22 +741,20 @@
 }
 
 /* =========================================
-   SCROLLBAR PERSONALIZADO PARA SIDEBAR
+   RESPONSIVE - PANTALLAS MUY PEQUEÑAS (< 360px)
    ========================================= */
 
-.sidebar::-webkit-scrollbar {
-    width: 4px;
-}
+@media (max-width: 360px) {
+    .app-header-subtitle {
+        display: none;
+    }
 
-.sidebar::-webkit-scrollbar-track {
-    background: transparent;
-}
+    .app-header-logo {
+        width: 36px;
+        height: 36px;
+    }
 
-.sidebar::-webkit-scrollbar-thumb {
-    background: var(--color-gold-dark);
-    border-radius: var(--radius-full);
-}
-
-.sidebar::-webkit-scrollbar-thumb:hover {
-    background: var(--color-gold-primary);
+    .app-header-title {
+        font-size: var(--text-sm);
+    }
 }

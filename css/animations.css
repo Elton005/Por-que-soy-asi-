@@ -221,31 +221,40 @@
    TEXT ANIMATIONS
    ========================================= */
 
+/* =========================================
+   TEXT SHIMMER - VERSIÓN "ORO LÍQUIDO"
+   Efecto premium con destellos y aura
+   ========================================= */
+
+/* =========================================
+   TEXT SHIMMER - VERSIÓN "ORO CLÁSICO"
+   Elegante, sobrio, profesional
+   ========================================= */
+
 .text-shimmer {
-    background: linear-gradient(90deg, var(--color-gold-primary) 0%, var(--color-gold-light) 50%, var(--color-gold-primary) 100%);
+    /* Gradiente dorado sutil con movimiento muy lento */
+    background: linear-gradient(
+        90deg,
+        #B8956A 0%,
+        #D4AF37 25%,
+        #F4E4BC 50%,
+        #D4AF37 75%,
+        #B8956A 100%
+    );
     background-size: 200% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    animation: textShimmer 3s linear infinite;
+    color: transparent;
+    
+    /* Sombra sutil para profundidad */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+    
+    /* Animación muy lenta y suave */
+    animation: textShimmer 8s linear infinite;
 }
 
 @keyframes textShimmer {
-    to {
-        background-position: 200% center;
-    }
-}
-
-/* =========================================
-   REDUCED MOTION
-   ========================================= */
-
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-    }
+    0% { background-position: 200% center; }
+    100% { background-position: -200% center; }
 }
