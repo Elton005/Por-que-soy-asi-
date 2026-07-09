@@ -8,12 +8,12 @@
             <i id="profile-icon" class="fa-solid fa-user" style="font-size: var(--text-4xl); color: var(--color-black-deep);"></i>
         </div>
         <h2 class="text-gradient-gold">Tu Perfil</h2>
-        <p style="color: var(--color-gray-light); font-size: var(--text-sm); margin-top: var(--space-2);">
+        <p id="profile-date" style="color: var(--color-gray-light); font-size: var(--text-sm); margin-top: var(--space-2); font-style: italic;">
             Tu último análisis de autoconocimiento
         </p>
     </header>
 
-    <!-- ═══════════════════════════════════════════
+    <!-- ══════════════════════════════════════════
          ESTADO: SIN TEST REALIZADO
          ═══════════════════════════════════════════ -->
     <div id="profile-empty" class="card text-center" style="padding: var(--space-10); border: 2px dashed var(--color-gold-dark); background: transparent;">
@@ -31,44 +31,65 @@
     </div>
 
     <!-- ═══════════════════════════════════════════
-         ESTADO: PERFIL CARGADO (oculto por defecto)
+         ESTADO: PERFIL COMPLETO CARGADO
          ═══════════════════════════════════════════ -->
     <div id="profile-content" style="display: none;">
         
-        <!-- Perfil Principal -->
+        <!-- Perfil Predominante -->
         <article class="card card-gold" style="margin-bottom: var(--space-6);">
-            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: var(--space-4); flex-wrap: wrap; gap: var(--space-3);">
-                <h3 style="color: var(--color-gold-primary); margin: 0; font-family: var(--font-serif-primary); font-size: var(--text-xl);">
-                    Perfil Predominante
-                </h3>
-                <span id="profile-date" style="color: var(--color-gray-light); font-size: var(--text-xs); font-style: italic;"></span>
-            </div>
+            <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-3); font-family: var(--font-serif-primary); font-size: var(--text-xl);">
+                Perfil Predominante
+            </h3>
             <h2 id="profile-name" class="text-gradient-gold" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);"></h2>
             <p id="profile-description" style="color: var(--color-white-soft); line-height: 1.8;"></p>
         </article>
 
         <!-- Gráfico Radar -->
         <article class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
-            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center;">Tus 8 Dimensiones</h4>
-            <div id="profile-radar-chart" style="width: 100%; max-width: 400px; margin: 0 auto;">
+            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center; font-family: var(--font-serif-primary);">
+                Tus 8 Dimensiones
+            </h4>
+            <div id="profile-radar-chart" style="width: 100%; max-width: 450px; margin: 0 auto;">
                 <p style="text-align: center; color: var(--color-gray-light);">Cargando gráfico...</p>
             </div>
         </article>
 
-        <!-- Fortalezas y Puntos Ciegos -->
+        <!-- Perfil Integrador -->
+        <div id="profile-integrative-container" style="margin-bottom: var(--space-6);">
+            <!-- Se llena dinámicamente -->
+        </div>
+
+        <!-- Las 8 Dimensiones en Detalle -->
+        <section style="margin-bottom: var(--space-6);">
+            <div class="ornament-divider" style="margin-bottom: var(--space-6);">
+                <span class="ornament-symbol">✦</span>
+            </div>
+            <h3 style="text-align: center; color: var(--color-gold-primary); font-family: var(--font-serif-primary); font-size: var(--text-xl); margin-bottom: var(--space-6);">
+                Análisis Detallado por Dimensión
+            </h3>
+            <p style="text-align: center; color: var(--color-gray-light); font-size: var(--text-sm); margin-bottom: var(--space-6); font-style: italic;">
+                Toca cada dimensión para ver tu análisis personalizado
+            </p>
+            
+            <div id="profile-dimensions-container">
+                <!-- Se llena dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Fortalezas y Puntos Ciegos Globales -->
         <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-6);">
             <div class="card">
-                <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">✨ Tus Fortalezas</h4>
+                <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">✨ Tus Fortalezas Globales</h4>
                 <ul id="profile-strengths" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;"></ul>
             </div>
             <div class="card">
-                <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">🔍 Puntos Ciegos</h4>
+                <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">🔍 Puntos Ciegos Globales</h4>
                 <ul id="profile-blindspots" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;"></ul>
             </div>
         </div>
 
         <!-- Recomendación -->
-        <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-6);">
+        <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-4);">
             <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">🌱 Recomendación</h4>
             <p id="profile-recommendation" style="color: var(--color-white-soft); font-style: italic; line-height: 1.8;"></p>
         </div>
@@ -95,7 +116,6 @@
 </section>
 
 <style>
-    /* Animación suave para mostrar/ocultar */
     #profile-content {
         animation: fadeIn 0.5s ease;
     }
@@ -107,7 +127,6 @@
 </style>
 
 <script>
-    // Cargar perfil al inicializar
     document.addEventListener('DOMContentLoaded', function() {
         if (typeof window.initProfile === 'function') {
             window.initProfile();

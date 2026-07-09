@@ -1,16 +1,15 @@
 /**
- * Profile UI Manager
- * Carga y muestra el último resultado del test guardado
+ * Profile UI Manager - Versión Completa
+ * Muestra el último resultado completo del test con todas las secciones
  */
 
 const ProfileUI = {
     init() {
-        console.log('📋 ProfileUI iniciado');
+        console.log(' ProfileUI iniciado');
         this.loadProfile();
     },
 
     loadProfile() {
-        // Obtener resultado del Storage
         const result = window.Storage.get('testResult');
         console.log('📦 Resultado del test:', result);
 
@@ -18,20 +17,19 @@ const ProfileUI = {
         const contentState = document.getElementById('profile-content');
 
         if (!result || !result.perfil) {
-            // No hay test realizado
             console.log('⚠️ No hay perfil guardado');
             if (emptyState) emptyState.style.display = 'block';
             if (contentState) contentState.style.display = 'none';
             return;
         }
 
-        // Mostrar contenido del perfil
+        // Mostrar contenido completo
         if (emptyState) emptyState.style.display = 'none';
         if (contentState) contentState.style.display = 'block';
 
         const perfil = result.perfil;
 
-        // 1. Actualizar icono
+        // 1. Actualizar icono del header
         const iconEl = document.getElementById('profile-icon');
         if (iconEl && perfil.icon) {
             iconEl.className = `fa-solid ${perfil.icon}`;
@@ -57,19 +55,19 @@ const ProfileUI = {
             descEl.textContent = perfil.descripcion || '';
         }
 
-        // 5. Actualizar fortalezas
+        // 5. Actualizar fortalezas globales
         const strengthsEl = document.getElementById('profile-strengths');
         if (strengthsEl && perfil.fortalezas) {
             strengthsEl.innerHTML = perfil.fortalezas.map(f => 
-                `<li style="margin-bottom: var(--space-2); color: var(--color-white-soft);">• ${f}</li>`
+                `<li style="margin-bottom: 8px; color: var(--color-white-soft);">• ${f}</li>`
             ).join('');
         }
 
-        // 6. Actualizar puntos ciegos
+        // 6. Actualizar puntos ciegos globales
         const blindspotsEl = document.getElementById('profile-blindspots');
         if (blindspotsEl && perfil.puntosCiegos) {
             blindspotsEl.innerHTML = perfil.puntosCiegos.map(b => 
-                `<li style="margin-bottom: var(--space-2); color: var(--color-white-soft);">• ${b}</li>`
+                `<li style="margin-bottom: 8px; color: var(--color-white-soft);">• ${b}</li>`
             ).join('');
         }
 
@@ -90,7 +88,17 @@ const ProfileUI = {
             window.renderRadarChart(result.dimensionScores, 'profile-radar-chart');
         }
 
-        console.log('✅ Perfil cargado correctamente');
+        // 10. Generar tarjetas de las 8 dimensiones detalladas
+        if (result.dimensionScores && typeof window.renderDimensionCards === 'function') {
+            window.renderDimensionCards(result.dimensionScores, 'profile-dimensions-container');
+        }
+
+        // 11. Generar perfil integrador
+        if (result.dimensionScores && typeof window.renderIntegrativeProfile === 'function') {
+            window.renderIntegrativeProfile(result.dimensionScores, 'profile-integrative-container');
+        }
+
+        console.log('✅ Perfil completo cargado correctamente');
     }
 };
 

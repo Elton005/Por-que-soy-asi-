@@ -11,6 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Router.addRoute('test', () => loadView('test-intro'));
     Router.addRoute('test/start', () => loadView('test-intro'));
     Router.addRoute('test/question', () => loadView('test-question'));
+    Router.addRoute('test/dimension-intro', () => loadView('dimension-intro'));
     Router.addRoute('test/results', () => loadView('results'));
     Router.addRoute('diary', () => loadView('diary'));
     Router.addRoute('profile', () => loadView('profile'));

@@ -1,60 +1,173 @@
 <section class="main-content fade-in-up">
-  <header class="text-center" style="margin-bottom: var(--space-8);">
-    <div class="avatar avatar-lg" style="margin: 0 auto var(--space-4); background: var(--gradient-gold); display: flex; align-items: center; justify-content: center;">
-      <i id="result-icon" class="fa-solid fa-compass" style="font-size: var(--text-4xl); color: var(--color-black-deep);"></i>
+    
+    <!-- ═════════════════════════════════════════
+         1. HEADER CON LOGO PERSONALIZADO
+         ═══════════════════════════════════════════ -->
+    <header class="text-center" style="margin-bottom: var(--space-10);">
+        <!-- Logo personalizado del mapa -->
+        <div style="width: 120px; height: 120px; margin: 0 auto var(--space-5); position: relative;">
+            <div style="position: absolute; inset: -10px; background: radial-gradient(circle, rgba(201,169,97,0.3) 0%, transparent 70%); border-radius: 50%; animation: pulseGlow 3s ease-in-out infinite;"></div>
+            <img src="assets/images/mapa.jpg" 
+                 alt="Mapa de Autoconocimiento" 
+                 style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-full); border: 3px solid var(--color-gold-primary); box-shadow: 0 0 30px rgba(201,169,97,0.4); position: relative; z-index: 1;">
+        </div>
+        
+        <h2 class="text-gradient-gold" style="font-size: clamp(1.8rem, 5vw, 2.5rem); margin-bottom: var(--space-3);">
+            Tu Mapa de Autoconocimiento
+        </h2>
+        <p style="color: var(--color-gray-light); font-size: var(--text-sm);">
+            Basado en tus respuestas honestas a las 8 dimensiones
+        </p>
+    </header>
+
+    <!-- ═══════════════════════════════════════════
+         2. PERFIL PREDOMINANTE
+         ═══════════════════════════════════════════ -->
+    <article class="card card-gold animate-fade-in" style="margin-bottom: var(--space-8); animation-delay: 0.1s;">
+        <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-3); font-family: var(--font-serif-primary); font-size: var(--text-xl);">
+            Perfil Predominante
+        </h3>
+        <h2 id="result-profile-name" class="text-gradient-gold" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);"></h2>
+        <p id="result-description" style="color: var(--color-white-soft); line-height: 1.8;"></p>
+    </article>
+
+    <!-- ═══════════════════════════════════════════
+         3. GRÁFICO RADAR
+         ═══════════════════════════════════════════ -->
+    <article class="card animate-fade-in" style="margin-bottom: var(--space-8); padding: var(--space-6); animation-delay: 0.2s;">
+        <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center; font-family: var(--font-serif-primary);">
+            Tus 8 Dimensiones
+        </h3>
+        <div id="radar-chart-container" style="width: 100%; max-width: 450px; margin: 0 auto;">
+            <p style="text-align: center; color: var(--color-gray-light);">Cargando gráfico...</p>
+        </div>
+    </article>
+
+    <!-- ═══════════════════════════════════════════
+         4. PERFIL INTEGRADOR
+         ═══════════════════════════════════════════ -->
+    <div id="integrative-profile-container" class="animate-fade-in" style="margin-bottom: var(--space-8); animation-delay: 0.3s;">
+        <!-- Se llena dinámicamente -->
     </div>
-    <h2 class="text-gradient-gold">Tu Mapa de Autoconocimiento</h2>
-    <p style="color: var(--color-gray-light); font-size: var(--text-sm); margin-top: var(--space-2);">
-      Basado en tus respuestas honestas a las 8 dimensiones
-    </p>
-  </header>
 
-  <!-- Perfil Principal -->
-  <article class="card card-gold" style="margin-bottom: var(--space-6);">
-    <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">Perfil Predominante</h3>
-    <h2 id="result-profile-name" class="text-gradient-gold" style="font-size: var(--text-2xl); margin-bottom: var(--space-4);">Cargando...</h2>
-    <p id="result-description" style="color: var(--color-white-soft); line-height: 1.8;">Espera un momento...</p>
-  </article>
+    <!-- ═══════════════════════════════════════════
+         5. LAS 8 DIMENSIONES EN DETALLE
+         ═══════════════════════════════════════════ -->
+    <section class="animate-fade-in" style="margin-bottom: var(--space-8); animation-delay: 0.4s;">
+        <div class="ornament-divider" style="margin-bottom: var(--space-6);">
+            <span class="ornament-symbol">✦</span>
+        </div>
+        <h3 style="text-align: center; color: var(--color-gold-primary); font-family: var(--font-serif-primary); font-size: var(--text-xl); margin-bottom: var(--space-6);">
+            Análisis Detallado por Dimensión
+        </h3>
+        <p style="text-align: center; color: var(--color-gray-light); font-size: var(--text-sm); margin-bottom: var(--space-6); font-style: italic;">
+            Toca cada dimensión para ver tu análisis personalizado
+        </p>
+        
+        <div id="dimensions-detail-container">
+            <!-- Se llena dinámicamente con las 8 tarjetas desplegables -->
+        </div>
+    </section>
 
-  <!-- Gráfico Radar -->
-  <article class="card" style="margin-bottom: var(--space-6); padding: var(--space-6);">
-    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center;">Tus 8 Dimensiones</h4>
-    <div id="radar-chart-container" style="width: 100%; max-width: 400px; margin: 0 auto;">
-      <p style="text-align: center; color: var(--color-gray-light);">Generando gráfico...</p>
+    <!-- ══════════════════════════════════════════
+         6. FORTALEZAS Y PUNTOS CIEGOS GLOBALES
+         ═══════════════════════════════════════════ -->
+    <div class="animate-fade-in" style="display: grid; gap: var(--space-4); margin-bottom: var(--space-8); animation-delay: 0.5s;">
+        <div class="card">
+            <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">✨ Tus Fortalezas Globales</h4>
+            <ul id="result-strengths" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;"></ul>
+        </div>
+        <div class="card">
+            <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">🔍 Puntos Ciegos Globales</h4>
+            <ul id="result-blindspots" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;"></ul>
+        </div>
     </div>
-  </article>
 
-  <!-- Fortalezas y Puntos Ciegos -->
-  <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-6);">
-    <div class="card">
-      <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">✨ Tus Fortalezas</h4>
-      <ul id="result-strengths" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;">
-        <li>Cargando...</li>
-      </ul>
+    <!-- ═══════════════════════════════════════════
+         7. RECOMENDACIÓN Y REFLEXIÓN
+         ═══════════════════════════════════════════ -->
+    <div class="animate-fade-in" style="animation-delay: 0.6s;">
+        <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-4);">
+            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">🌱 Recomendación</h4>
+            <p id="result-recommendation" style="color: var(--color-white-soft); font-style: italic; line-height: 1.8;"></p>
+        </div>
+
+        <div class="card" style="border: 1px dashed var(--color-gold-dark); background: transparent; margin-bottom: var(--space-8);">
+            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">💭 Pregunta para reflexionar</h4>
+            <p id="result-reflection-question" style="color: var(--color-white-soft); line-height: 1.8; font-weight: 500;"></p>
+        </div>
     </div>
-    <div class="card">
-      <h4 style="color: var(--color-gold-light); margin-bottom: var(--space-3);">🔍 Puntos Ciegos</h4>
-      <ul id="result-blindspots" style="color: var(--color-white-soft); padding-left: var(--space-4); line-height: 1.8;">
-        <li>Cargando...</li>
-      </ul>
+
+    <!-- ═══════════════════════════════════════════
+         8. BOTONES DE ACCIÓN (Incluye Compartir)
+         ═══════════════════════════════════════════ -->
+    <div class="animate-fade-in" style="display: flex; flex-direction: column; gap: var(--space-4); animation-delay: 0.7s;">
+        
+        <!-- Botón de compartir (destacado) -->
+        <button id="share-results-btn" class="btn btn-gold btn-lg" style="width: 100%; text-align: center; background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%); color: var(--color-black-deep); font-weight: 600;">
+            <i class="fa-solid fa-share-nodes" style="margin-right: 8px;"></i>
+            Compartir mis resultados
+        </button>
+        
+        <a href="#diary" class="btn btn-primary btn-lg" style="width: 100%; text-align: center;">
+            <i class="fa-solid fa-book-open" style="margin-right: 8px;"></i>
+            Ir al Diario de 7 Días
+        </a>
+        <button id="restart-test-btn" class="btn btn-ghost" style="width: 100%; text-align: center;">
+            <i class="fa-solid fa-rotate" style="margin-right: 8px;"></i>
+            Repetir Evaluación
+        </button>
+        <a href="#home" class="btn btn-ghost" style="width: 100%; text-align: center;">
+            Volver al inicio
+        </a>
     </div>
-  </div>
 
-  <!-- Recomendación -->
-  <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-6);">
-    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);"> Recomendación</h4>
-    <p id="result-recommendation" style="color: var(--color-white-soft); font-style: italic; line-height: 1.8;">Cargando...</p>
-  </div>
-
-  <!-- Pregunta de Reflexión -->
-  <div class="card" style="border: 1px dashed var(--color-gold-dark); background: transparent; margin-bottom: var(--space-8);">
-    <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">💭 Para reflexionar</h4>
-    <p id="result-reflection-question" style="color: var(--color-white-soft); line-height: 1.8; font-weight: 500;">Cargando...</p>
-  </div>
-
-  <!-- Acciones -->
-  <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-    <a href="#diary" class="btn btn-primary btn-lg" style="width: 100%; text-align: center;">Ir al Diario de 7 Días</a>
-    <button class="btn btn-ghost" id="restart-test-btn" style="width: 100%; text-align: center;">Repetir Evaluación</button>
-  </div>
 </section>
+
+<style>
+    /* Animaciones de entrada escalonadas */
+    .animate-fade-in {
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+    
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    
+    /* Animación de brillo para el logo */
+    @keyframes pulseGlow {
+        0%, 100% {
+            opacity: 0.6;
+            transform: scale(1);
+        }
+        50% {
+            opacity: 1;
+            transform: scale(1.1);
+        }
+    }
+    
+    /* Efecto hover en el logo */
+    header img {
+        transition: transform var(--transition-base);
+    }
+    
+    header img:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Responsive */
+    @media (max-width: 480px) {
+        header > div:first-child {
+            width: 100px !important;
+            height: 100px !important;
+        }
+    }
+</style>
