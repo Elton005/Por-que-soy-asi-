@@ -63,6 +63,7 @@
             </div>
         </div>
     </div>
+
     <!-- Header Superior (Fijo) -->
     <header id="app-header" class="app-header">
         <div class="app-header-content">
@@ -76,7 +77,7 @@
                 </div>
             </div>
             <div class="app-header-actions">
-                <!-- Aquí puedes agregar acciones futuras (ej: botón de compartir, menú, etc.) -->
+                <!-- Aquí puedes agregar acciones futuras -->
             </div>
         </div>
     </header>
@@ -111,44 +112,36 @@
         </nav>
         
         <div class="sidebar-footer">
-    <div class="ornament-divider" style="margin: var(--space-4) 0;">
-        <span class="ornament-symbol" style="font-size: var(--text-sm);">✦</span>
-    </div>
-    <p class="sidebar-quote">"Comprenderte no es el final del camino.<br>Es el comienzo de una vida más consciente."</p>
-    
-    <!-- Autores con fotos -->
-    <div class="authors-section" style="margin-top: var(--space-6);">
-        <div class="author-item" style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
-            <img src="assets/images/autor-yoeldis.jpg" 
-                 alt="Yoeldis Castillo Quiala" 
-                 class="author-photo"
-                 style="width: 40px; 
-                        height: 40px; 
-                        border-radius: var(--radius-full); 
-                        object-fit: cover;
-                        border: 2px solid var(--color-gold-dark);">
-            <div>
-                <p class="sidebar-authors" style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">Yoeldis Castillo Q.</p>
-                <p style="margin: 0; font-size: 0.7rem; color: var(--color-gray-light);">Psicólogo</p>
+            <div class="ornament-divider" style="margin: var(--space-4) 0;">
+                <span class="ornament-symbol" style="font-size: var(--text-sm);">✦</span>
             </div>
-        </div>
-        
-            <div class="author-item" style="display: flex; align-items: center; gap: var(--space-3);">
-                <img src="assets/images/autor-junior.jpg" 
-                     alt="Junior Osmany Coronel Durán" 
-                     class="author-photo"
-                     style="width: 40px; 
-                            height: 40px; 
-                            border-radius: var(--radius-full); 
-                            object-fit: cover;
-                            border: 2px solid var(--color-gold-dark);">
-                <div>
-                    <p class="sidebar-authors" style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">Junior O. Coronel D.</p>
-                    <p style="margin: 0; font-size: 0.7rem; color: var(--color-gray-light);">Coautor</p>
+            <p class="sidebar-quote">"Comprenderte no es el final del camino.<br>Es el comienzo de una vida más consciente."</p>
+            
+            <!-- Autores con fotos -->
+            <div class="authors-section" style="margin-top: var(--space-6);">
+                <div class="author-item" style="display: flex; align-items: center; gap: var(--space-3); margin-bottom: var(--space-4);">
+                    <img src="assets/images/autor-yoeldis.jpg" 
+                         alt="Yoeldis Castillo Quiala" 
+                         class="author-photo"
+                         style="width: 40px; height: 40px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--color-gold-dark);">
+                    <div>
+                        <p class="sidebar-authors" style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">Yoeldis Castillo Q.</p>
+                        <p style="margin: 0; font-size: 0.7rem; color: var(--color-gray-light);">Psicólogo</p>
+                    </div>
+                </div>
+                
+                <div class="author-item" style="display: flex; align-items: center; gap: var(--space-3);">
+                    <img src="assets/images/autor-junior.jpg" 
+                         alt="Junior Osmany Coronel Durán" 
+                         class="author-photo"
+                         style="width: 40px; height: 40px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--color-gold-dark);">
+                    <div>
+                        <p class="sidebar-authors" style="margin: 0; font-weight: 600; color: var(--color-gold-primary);">Junior O. Coronel D.</p>
+                        <p style="margin: 0; font-size: 0.7rem; color: var(--color-gray-light);">Coautor</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </aside>
 
     <!-- Main App Container -->
@@ -191,14 +184,43 @@
         </div>
     </div>
 
-    <!-- Service Worker -->
-       <!-- Service Worker -->
+    <!-- ══════════════════════════════════════════════════════
+         SERVICE WORKER - CON DETECCIÓN DE ACTUALIZACIONES
+         ══════════════════════════════════════════════════════ -->
     <script>
         if ('serviceWorker' in navigator) {
             window.addEventListener('load', () => {
                 navigator.serviceWorker.register('sw.js')
-                    .then(registration => console.log('SW registered:', registration))
-                    .catch(error => console.log('SW registration failed:', error));
+                    .then((registration) => {
+                        console.log('✅ SW registrado:', registration.scope);
+                        
+                        // Detectar actualizaciones
+                        registration.addEventListener('updatefound', () => {
+                            const newWorker = registration.installing;
+                            console.log('🔄 Nueva versión del SW detectada');
+                            
+                            newWorker.addEventListener('statechange', () => {
+                                if (newWorker.state === 'installed' && navigator.serviceWorker.controller) {
+                                    // Hay una nueva versión lista
+                                    console.log('📦 Nueva versión disponible');
+                                    
+                                    // Notificar a la app
+                                    if (window.onSWUpdate) {
+                                        window.onSWUpdate();
+                                    }
+                                }
+                            });
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('❌ Error en SW:', error);
+                    });
+                
+                // Forzar recarga cuando el SW cambia
+                navigator.serviceWorker.addEventListener('controllerchange', () => {
+                    console.log('🔄 SW actualizado, recargando...');
+                    window.location.reload();
+                });
             });
         }
     </script>
