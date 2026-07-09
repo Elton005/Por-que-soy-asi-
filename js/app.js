@@ -1,6 +1,6 @@
 /**
  * App Entry Point
- * Versión: 5.0 - Con debug completo para instalación PWA
+ * Versión: 6.0 - Con actualización automática de PWA
  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     Router.addRoute('test/question', () => loadView('test-question'));
     Router.addRoute('test/results', () => loadView('results'));
     Router.addRoute('diary', () => loadView('diary'));
-    Router.addRoute('profile', () => loadView('profile'));  // ← Esta línea debe existir
+    Router.addRoute('profile', () => loadView('profile'));
 
     Router.init();
 
@@ -68,12 +68,10 @@ function showAppropriateNavigation() {
     header.style.display = 'block';
     
     if (window.innerWidth >= 1200) {
-        // Desktop: mostrar sidebar, ocultar bottom nav
         sidebar.classList.remove('hidden');
         bottomNav.classList.add('hidden');
         console.log('📱 Desktop: Sidebar + Header visible');
     } else {
-        // Tablet/Mobile: ocultar sidebar, mostrar bottom nav
         sidebar.classList.add('hidden');
         bottomNav.classList.remove('hidden');
         console.log('📱 Mobile/Tablet: Bottom nav + Header visible');
@@ -112,7 +110,7 @@ async function loadView(viewName, callback = null) {
                 'diary': 'initDiary',
                 'results': 'initResults',
                 'test-question': 'initTestQuestion',
-                'profile': 'initProfile'  // ← Agregar esto
+                'profile': 'initProfile'
             };
 
             const initFn = viewInitMap[viewName];
@@ -148,18 +146,14 @@ async function loadView(viewName, callback = null) {
 function setupInstallPrompt() {
     console.log('🔧 setupInstallPrompt() iniciado');
     
-    // Variable global para el evento
     window.deferredPrompt = null;
     
-    // Detectar si ya está instalada
     const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
     console.log('📱 ¿Ya instalada?', isStandalone);
     
-    // Detectar iOS
     const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
     console.log('🍎 ¿Es iOS?', isIOS);
     
-    // Detectar si está en modo desktop
     const isDesktop = window.innerWidth >= 1200;
     console.log('🖥️ ¿Es desktop?', isDesktop);
 
@@ -171,7 +165,6 @@ function setupInstallPrompt() {
         e.preventDefault();
         window.deferredPrompt = e;
         
-        // Mostrar el botón de instalación
         const installBtn = document.getElementById('btn-install-app');
         if (installBtn) {
             installBtn.style.display = 'inline-flex';
@@ -181,7 +174,6 @@ function setupInstallPrompt() {
         }
     });
 
-    // Escuchar cuando se instala
     window.addEventListener('appinstalled', () => {
         console.log('✅ PWA instalada exitosamente');
         window.deferredPrompt = null;
@@ -197,18 +189,15 @@ function setupInstallPrompt() {
         console.log('🖱️ Botón de instalación clickeado');
         console.log('📦 deferredPrompt existe?', !!window.deferredPrompt);
         
-        // Caso iOS
         if (isIOS) {
             console.log('🍎 Mostrando instrucciones para iOS');
             showToast('En iPhone: usa el botón "Compartir" y elige "Añadir a pantalla de inicio"', 'info', 5000);
             return;
         }
 
-        // Si no hay evento guardado
         if (!window.deferredPrompt) {
             console.warn('⚠️ No hay deferredPrompt disponible');
             
-            // Verificar posibles causas
             if (isStandalone) {
                 showToast('La aplicación ya está instalada', 'info');
             } else {
@@ -223,11 +212,9 @@ function setupInstallPrompt() {
         }
 
         try {
-            // Disparar el prompt nativo
             console.log('🚀 Llamando a deferredPrompt.prompt()');
             window.deferredPrompt.prompt();
             
-            // Esperar respuesta del usuario
             const { outcome } = await window.deferredPrompt.userChoice;
             console.log('📊 Resultado:', outcome);
             
@@ -237,7 +224,6 @@ function setupInstallPrompt() {
                 showToast('Instalación cancelada', 'info');
             }
             
-            // Limpiar el evento
             window.deferredPrompt = null;
             const installBtn = document.getElementById('btn-install-app');
             if (installBtn) installBtn.style.display = 'none';
@@ -257,7 +243,6 @@ function setupInstallPrompt() {
         console.log('   - Service Worker:', navigator.serviceWorker ? '✅ Registrado' : '❌ No soportado');
         console.log('   - Manifest:', document.querySelector('link[rel="manifest"]') ? '✅ Enlazado' : '❌ No encontrado');
         
-        // Verificar iconos
         const manifestLink = document.querySelector('link[rel="manifest"]');
         if (manifestLink) {
             fetch(manifestLink.href)
@@ -310,7 +295,76 @@ function createToastContainer() {
     return container;
 }
 
-// Exportar funciones globales
+// ═══════════════════════════════════════════════════════
+// ACTUALIZACIÓN AUTOMÁTICA DE LA PWA
+// ═══════════════════════════════════════════════════════
+
+/**
+ * Muestra un toast invitando al usuario a actualizar
+ */
+function showUpdateNotification() {
+    const container = document.getElementById('toast-container') || createToastContainer();
+    
+    const toast = document.createElement('div');
+    toast.className = 'toast info';
+    toast.style.background = 'linear-gradient(135deg, var(--color-gold-primary) 0%, var(--color-gold-dark) 100%)';
+    toast.style.color = 'var(--color-black-deep)';
+    toast.style.padding = 'var(--space-4) var(--space-6)';
+    toast.style.borderRadius = 'var(--radius-lg)';
+    toast.style.boxShadow = '0 8px 25px rgba(201,169,97,0.4)';
+    toast.style.display = 'flex';
+    toast.style.alignItems = 'center';
+    toast.style.gap = 'var(--space-3)';
+    toast.style.maxWidth = '400px';
+    toast.innerHTML = `
+        <i class="fa-solid fa-rotate" style="font-size: 1.2rem;"></i>
+        <span style="flex: 1; font-weight: 500;">Nueva versión disponible</span>
+        <button onclick="forceUpdate()" style="background: var(--color-black-deep); color: var(--color-gold-primary); border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-weight: 600;">
+            Actualizar
+        </button>
+    `;
+    
+    container.appendChild(toast);
+    
+    // Auto-cerrar después de 10 segundos
+    setTimeout(() => {
+        toast.style.opacity = '0';
+        toast.style.transform = 'translateX(100%)';
+        setTimeout(() => toast.remove(), 300);
+    }, 10000);
+}
+
+/**
+ * Fuerza la actualización del Service Worker
+ */
+window.forceUpdate = async () => {
+    if ('serviceWorker' in navigator) {
+        const registration = await navigator.serviceWorker.ready;
+        if (registration.waiting) {
+            registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+        } else {
+            window.location.reload(true);
+        }
+    }
+};
+
+// Callback cuando se detecta una actualización
+window.onSWUpdate = () => {
+    showUpdateNotification();
+};
+
+// Verificar si hay un SW en espera al cargar
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.ready.then((registration) => {
+        if (registration.waiting) {
+            console.log('⏳ Hay un SW en espera');
+        }
+    });
+}
+
+// ═══════════════════════════════════════════════════════
+// EXPORTAR FUNCIONES GLOBALES
+// ═══════════════════════════════════════════════════════
 window.loadView = loadView;
 window.showToast = showToast;
 window.showAppropriateNavigation = showAppropriateNavigation;
