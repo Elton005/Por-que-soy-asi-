@@ -7,7 +7,7 @@
         <div class="avatar avatar-lg" style="margin: 0 auto var(--space-4); background: var(--gradient-gold); display: flex; align-items: center; justify-content: center;">
             <i id="profile-icon" class="fa-solid fa-user" style="font-size: var(--text-4xl); color: var(--color-black-deep);"></i>
         </div>
-        <h2 class="text-gradient-gold">Tu Perfil</h2>
+        <h2 class="text-gradient-gold">Mi Perfil</h2>
         <p id="profile-date" style="color: var(--color-gray-light); font-size: var(--text-sm); margin-top: var(--space-2); font-style: italic;">
             Tu último análisis de autoconocimiento
         </p>
@@ -35,6 +35,17 @@
          ═══════════════════════════════════════════ -->
     <div id="profile-content" style="display: none;">
         
+        <!-- Estadísticas Rápidas -->
+        <div class="card" style="background: linear-gradient(135deg, var(--color-blue-mystic) 0%, var(--color-black-soft) 100%); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-6); padding: var(--space-6);">
+            <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-4); text-align: center; font-family: var(--font-serif-primary); font-size: var(--text-lg);">
+                Resumen Rápido
+            </h3>
+            <div style="text-align: center;">
+                <div id="stat-tests" style="font-size: var(--text-5xl); font-weight: 700; color: var(--color-gold-primary); line-height: 1;">1</div>
+                <div style="font-size: var(--text-sm); color: var(--color-gray-light); text-transform: uppercase; letter-spacing: 0.15em; margin-top: var(--space-2);">Tests realizados</div>
+            </div>
+        </div>
+
         <!-- Perfil Predominante -->
         <article class="card card-gold" style="margin-bottom: var(--space-6);">
             <h3 style="color: var(--color-gold-primary); margin-bottom: var(--space-3); font-family: var(--font-serif-primary); font-size: var(--text-xl);">
@@ -90,7 +101,7 @@
 
         <!-- Recomendación -->
         <div class="card" style="background: var(--color-blue-mystic); border: 1px solid var(--color-gold-dark); margin-bottom: var(--space-4);">
-            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);">🌱 Recomendación</h4>
+            <h4 style="color: var(--color-gold-primary); margin-bottom: var(--space-3);"> Recomendación</h4>
             <p id="profile-recommendation" style="color: var(--color-white-soft); font-style: italic; line-height: 1.8;"></p>
         </div>
 
@@ -102,14 +113,14 @@
 
         <!-- Acciones -->
         <div style="display: flex; flex-direction: column; gap: var(--space-4);">
-            <a href="#diary" class="btn btn-primary btn-lg" style="width: 100%; text-align: center;">
-                <i class="fa-solid fa-book-open" style="margin-right: 8px;"></i>
-                Ir al Diario de 7 Días
-            </a>
-            <a href="#test" class="btn btn-ghost" style="width: 100%; text-align: center;">
+            <a href="#test" class="btn btn-primary btn-lg" style="width: 100%; text-align: center;">
                 <i class="fa-solid fa-rotate" style="margin-right: 8px;"></i>
                 Repetir Evaluación
             </a>
+            <button id="clear-data-btn" class="btn btn-ghost" style="width: 100%; text-align: center; color: var(--color-red);">
+                <i class="fa-solid fa-trash" style="margin-right: 8px;"></i>
+                Borrar mis datos
+            </button>
         </div>
     </div>
 

@@ -1,618 +1,83 @@
 <section class="main-content fade-in-up">
     
     <!-- ══════════════════════════════════════════
-         1. TÍTULO + SUBTÍTULO
+         1. TÍTULO + BIENVENIDA
          ═══════════════════════════════════════════ -->
     <header class="hero text-center" style="margin-bottom: var(--space-10);">
         <div style="margin-bottom: var(--space-6);">
             <h1 class="text-shimmer" 
                 style="font-family: var(--font-serif-primary); 
-                       font-size: clamp(2rem, 6vw, 3.5rem); 
+                       font-size: clamp(1.8rem, 5vw, 3rem); 
                        font-weight: 600; 
-                       letter-spacing: 0.15em; 
-                       line-height: 1.2;
-                       margin: 0;
-                       text-transform: uppercase;">
-                ¿Por qué soy así?
+                       letter-spacing: 0.12em; 
+                       line-height: 1.3;
+                       margin: 0;">
+                Bienvenido a<br>¿Por qué soy así? <span style="color: var(--color-gold-light); font-weight: 800; text-shadow: 0 0 15px rgba(201,169,97,0.6);">Plus</span>
             </h1>
         </div>
         
-        <p style="color: var(--color-gold-light); 
-                  font-family: var(--font-serif-secondary); 
-                  font-size: clamp(0.9rem, 3vw, 1.1rem); 
-                  font-style: italic; 
+        <p style="color: var(--color-white-soft); 
+                  font-family: var(--font-sans); 
+                  font-size: clamp(0.95rem, 2.5vw, 1.1rem); 
                   margin: 0 auto; 
-                  letter-spacing: 0.02em;
-                  line-height: 1.6;
-                  max-width: 90%;">
-            Las 8 dimensiones que explican<br>tu forma de pensar, sentir y actuar
+                  letter-spacing: 0.01em;
+                  line-height: 1.7;
+                  max-width: 90%;
+                  font-weight: 400;">
+            La experiencia interactiva oficial que complementa el libro con el mismo nombre y transforma la lectura en un viaje profundo de autoconocimiento.
         </p>
     </header>
 
-            <!-- ═══════════════════════════════════════════
-         2. PROMO DEL LIBRO (Todo en un solo cuadro)
-         ═══════════════════════════════════════════ -->  
-        <div class="book-promo-container" style="background: var(--color-black-soft); 
-                                                   border: 2px solid var(--color-gold-dark);
-                                                   border-radius: var(--radius-xl);
-                                                   padding: var(--space-6);
-                                                   margin-bottom: var(--space-6);
-                                                   box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
-            
-            <!-- Portada + Texto (siempre visibles) -->
-            <div style="display: flex; 
-                        gap: var(--space-5); 
-                        align-items: center; 
-                        margin-bottom: var(--space-5);
-                        flex-wrap: wrap;">
-                
-                <!-- Portada -->
-                <div style="flex-shrink: 0;">
-                    <img src="assets/images/portada-libro.jpg" 
-                         alt="Portada del libro" 
-                         style="width: 160px; 
-                                height: auto; 
-                                border-radius: var(--radius-lg);
-                                box-shadow: 0 8px 25px rgba(201,169,97,0.3);
-                                border: 2px solid var(--color-gold-dark);">
-                </div>
-                
-                <!-- Texto descriptivo -->
-                <div style="flex: 1; min-width: 200px;">
-                    <h2 style="font-family: var(--font-serif-primary); 
-                               color: var(--color-gold-primary); 
-                               font-size: var(--text-xl); 
-                               margin-bottom: var(--space-2);
-                               letter-spacing: 0.05em;">
-                        ¿Por qué soy así?
-                    </h2>
-                    <p style="color: var(--color-gray-light); 
-                              font-family: var(--font-serif-secondary); 
-                              font-size: var(--text-sm); 
-                              font-style: italic;
-                              margin-bottom: var(--space-4);
-                              line-height: 1.6;">
-                        Las 8 dimensiones que explican tu forma de pensar, sentir y actuar
-                    </p>
-                    <p style="color: var(--color-white-soft); 
-                              font-size: var(--text-sm); 
-                              line-height: 1.7;
-                              margin: 0;">
-                        <strong style="color: var(--color-gold-light);">¿Aún no tienes el libro?</strong> 
-                        Descubre más sobre esta obra que te ayudará a conocerte mejor y transformar tu vida.
-                    </p>
-                </div>
-            </div>
-    
-            <!-- Desplegable con prólogo y botón -->
-            <details class="book-details" style="border-top: 1px solid var(--color-gold-dark); padding-top: var(--space-5);">
-                <summary class="book-summary">
-                    <i class="fa-solid fa-book-open" style="margin-right: var(--space-3);"></i>
-                    <span>Descubre el contenido del libro</span>
-                    <i class="fa-solid fa-chevron-down book-arrow"></i>
-                </summary>
-                
-                <div class="book-content" style="margin-top: var(--space-5);">
-                    <!-- Prólogo -->
-                    <div style="background: var(--color-black-deep); 
-                                border-left: 3px solid var(--color-gold-primary);
-                                padding: var(--space-5); 
-                                margin-bottom: var(--space-5);
-                                border-radius: 0 var(--radius-lg) var(--radius-lg) 0;">
-                        <h4 style="color: var(--color-gold-light); 
-                                   font-family: var(--font-serif-primary); 
-                                   font-size: var(--text-sm); 
-                                   margin-bottom: var(--space-3);
-                                   letter-spacing: 0.1em;
-                                   text-transform: uppercase;">
-                                Prólogo
-                            </h4>
-                        <p style="color: var(--color-white-soft); 
-                                  font-family: var(--font-serif-secondary); 
-                                  font-size: var(--text-sm); 
-                                  line-height: 1.8; 
-                                  font-style: italic;
-                                  margin: 0;">
-                                Este libro nació de una pregunta simple pero profunda: 
-                                <strong style="color: var(--color-gold-primary); font-style: normal;">¿Por qué soy así?</strong> 
-                                Una interrogante que todos nos hemos hecho alguna vez, pero que pocas veces nos atrevemos a responder con honestidad.
-                                <br><br>
-                                A lo largo de estas páginas, te invitamos a emprender un viaje de autoconocimiento a través de 8 dimensiones 
-                                esenciales que explican tu forma de pensar, sentir y actuar. No encontrarás etiquetas ni juicios, 
-                                sino un espejo para mirarte con claridad y compasión.
-                                <br><br>
-                                Porque comprenderte no es el final del camino. Es el comienzo de una vida más consciente.
-                            </p>
-                    </div>
-                    
-                    <!-- Botón a Amazon -->
-                    <a href="https://www.amazon.com" 
-                       target="_blank"
-                       rel="noopener noreferrer"
-                       class="btn btn-gold btn-lg" 
-                       style="display: flex; 
-                              align-items: center; 
-                              justify-content: center; 
-                              gap: var(--space-3);
-                              width: 100%;
-                              background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%);
-                              color: var(--color-black-deep);
-                              font-weight: 600;
-                              padding: var(--space-4) var(--space-6);
-                              border-radius: var(--radius-lg);
-                              text-decoration: none;
-                              box-shadow: 0 4px 15px rgba(201,169,97,0.4);
-                              transition: all var(--transition-base);">
-                        <i class="fa-brands fa-amazon"></i>
-                        Obtener en Amazon
-                    </a>
-                </div>
-            </details>
-        </div>
-    
-    <style>
-        /* Estilos del cuadro del libro */
-        .book-promo-container {
-            transition: all var(--transition-base);
-        }
-        
-        .book-promo-container:hover {
-            border-color: var(--color-gold-primary);
-            box-shadow: 0 15px 40px rgba(201,169,97,0.2);
-        }
-        
-        /* Estilos del desplegable */
-        .book-details {
-            transition: all var(--transition-base);
-        }
-        
-        .book-summary {
-            display: flex;
-            align-items: center;
-            padding: var(--space-4);
-            cursor: pointer;
-            color: var(--color-gold-primary);
-            font-family: var(--font-serif-primary);
-            font-size: var(--text-base);
-            font-weight: 600;
-            letter-spacing: 0.05em;
-            list-style: none;
-            user-select: none;
-            transition: all var(--transition-fast);
-            border-radius: var(--radius-lg);
-        }
-        
-        .book-summary:hover {
-            background: rgba(201,169,97,0.05);
-        }
-        
-        .book-summary::-webkit-details-marker {
-            display: none;
-        }
-        
-        .book-arrow {
-            margin-left: auto;
-            transition: transform var(--transition-base);
-            font-size: var(--text-sm);
-        }
-        
-        .book-details[open] .book-arrow {
-            transform: rotate(180deg);
-        }
-        
-        .book-content {
-            animation: fadeSlideDown 0.4s ease;
-        }
-        
-        @keyframes fadeSlideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201,169,97,0.6);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .book-promo-container {
-                padding: var(--space-5);
-            }
-            
-            .book-promo-container > div:first-child {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .book-promo-container > div:first-child > div:last-child {
-                min-width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .book-promo-container > div:first-child img {
-                width: 140px !important;
-            }
-            .book-summary {
-                font-size: var(--text-sm);
-                padding: var(--space-3);
-            }
-        }
-    </style>
-
-            <!-- ═══════════════════════════════════════════
-         3. INSTALAR LA APLICACIÓN (Simple, sin desplegable)
+    <!-- ═══════════════════════════════════════════
+         2. INSTALAR LA APLICACIÓN (1ra Sección)
          ═══════════════════════════════════════════ -->
-    
-        <div class="install-promo-container" style="background: linear-gradient(135deg, var(--color-black-soft) 0%, var(--color-blue-mystic) 100%); 
-                                                     border: 2px solid var(--color-gold-dark);
-                                                     border-radius: var(--radius-xl);
-                                                     padding: var(--space-6);
-                                                     margin-bottom: var(--space-6);
-                                                     box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-                                                     transition: all var(--transition-base);">
+    <div class="install-promo-container" style="background: linear-gradient(135deg, var(--color-black-soft) 0%, var(--color-blue-mystic) 100%); 
+                                                 border: 2px solid var(--color-gold-dark);
+                                                 border-radius: var(--radius-xl);
+                                                 padding: var(--space-6);
+                                                 margin-bottom: var(--space-6);
+                                                 box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+                                                 transition: all var(--transition-base);">
+        
+        <div style="display: flex; gap: var(--space-5); align-items: center; flex-wrap: wrap;">
+            <div style="flex-shrink: 0;">
+                <img src="assets/icons/icon-512x512.png" 
+                     alt="Logo de la aplicación" 
+                     style="width: 120px; height: 120px; border-radius: var(--radius-xl); box-shadow: 0 8px 25px rgba(201,169,97,0.4); border: 2px solid var(--color-gold-dark); object-fit: cover;">
+            </div>
             
-            <!-- Logo + Texto + Botón -->
-            <div style="display: flex; 
-                        gap: var(--space-5); 
-                        align-items: center; 
-                        flex-wrap: wrap;">
-                
-                <!-- Logo de la app -->
-                <div style="flex-shrink: 0;">
-                    <img src="assets/icons/icon-512x512.png" 
-                         alt="Logo de la aplicación" 
-                         style="width: 120px; 
-                                height: 120px; 
-                                border-radius: var(--radius-xl);
-                                box-shadow: 0 8px 25px rgba(201,169,97,0.4);
-                                border: 2px solid var(--color-gold-dark);
-                                object-fit: cover;">
-                </div>
-                
-                <!-- Texto descriptivo -->
-                <div style="flex: 1; min-width: 200px;">
-                    <h2 style="font-family: var(--font-serif-primary); 
-                               color: var(--color-gold-primary); 
-                               font-size: var(--text-xl); 
-                               margin-bottom: var(--space-2);
-                               letter-spacing: 0.05em;">
-                        Lleva tu viaje interior contigo
-                    </h2>
-                    <p style="color: var(--color-white-soft); 
-                              font-size: var(--text-sm); 
-                              line-height: 1.7;
-                              margin: 0;">
-                        Instala la aplicación en tu dispositivo y accede a tu perfil, diario y resultados 
-                        <strong style="color: var(--color-gold-light);">sin conexión a internet</strong>. 
-                        Tu espacio de autoconocimiento siempre disponible.
-                    </p>
-                </div>
-                
-                <!-- Botón de instalación -->
-                <div style="flex-shrink: 0; width: 100%; max-width: 280px;">
-                    <button id="install-app-btn" 
-                            onclick="triggerInstall()"
-                            class="btn btn-gold btn-lg" 
-                            style="display: flex; 
-                                   align-items: center; 
-                                   justify-content: center; 
-                                   gap: var(--space-3);
-                                   width: 100%;
-                                   background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%);
-                                   color: var(--color-black-deep);
-                                   font-weight: 600;
-                                   padding: var(--space-4) var(--space-6);
-                                   border-radius: var(--radius-lg);
-                                   border: none;
-                                   cursor: pointer;
-                                   box-shadow: 0 4px 15px rgba(201,169,97,0.4);
-                                   transition: all var(--transition-base);">
-                        <i class="fa-solid fa-download"></i>
-                        Instalar ahora
-                    </button>
-                    
-                    <!-- Nota para iOS -->
-                    <p id="ios-install-note" 
-                       style="display: none; 
-                              text-align: center; 
-                              color: var(--color-gray-light); 
-                              font-size: var(--text-xs); 
-                              margin-top: var(--space-3); 
-                              font-style: italic;">
-                        <i class="fa-brands fa-apple"></i> 
-                        En iPhone: usa "Compartir" → "Añadir a pantalla de inicio"
-                    </p>
-                </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h2 style="font-family: var(--font-serif-primary); color: var(--color-gold-primary); font-size: var(--text-xl); margin-bottom: var(--space-2); letter-spacing: 0.05em;">
+                    Lleva tu viaje interior contigo
+                </h2>
+                <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.7; margin: 0;">
+                    Convierte cada día en una oportunidad para conocerte mejor. Accede a tu perfil, registra tus avances y consulta tus resultados cuando quieras, incluso sin internet.
+                </p>
+            </div>
+            
+            <div style="flex-shrink: 0; width: 100%; max-width: 280px;">
+                <button id="install-app-btn" 
+                        onclick="triggerInstall()"
+                        class="btn btn-gold btn-lg" 
+                        style="display: flex; align-items: center; justify-content: center; gap: var(--space-3); width: 100%; background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%); color: var(--color-black-deep); font-weight: 600; padding: var(--space-4) var(--space-6); border-radius: var(--radius-lg); border: none; cursor: pointer; box-shadow: 0 4px 15px rgba(201,169,97,0.4); transition: all var(--transition-base);">
+                    <i class="fa-solid fa-download"></i>
+                    Instalar ahora
+                </button>
+                <p id="ios-install-note" style="display: none; text-align: center; color: var(--color-gray-light); font-size: var(--text-xs); margin-top: var(--space-3); font-style: italic;">
+                    <i class="fa-brands fa-apple"></i> En iPhone: usa "Compartir" → "Añadir a pantalla de inicio"
+                </p>
             </div>
         </div>
-    
-    <style>
-        .install-promo-container:hover {
-            border-color: var(--color-gold-primary);
-            box-shadow: 0 15px 40px rgba(201,169,97,0.2);
-        }
-        
-        .btn-gold:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(201,169,97,0.6);
-        }
-        
-        /* Responsive */
-        @media (max-width: 768px) {
-            .install-promo-container {
-                padding: var(--space-5);
-            }
-            
-            .install-promo-container > div {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .install-promo-container > div > div:last-child {
-                max-width: 100%;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .install-promo-container img {
-                width: 100px !important;
-                height: 100px !important;
-            }
-        }
-    </style>
-
-        <!-- ═══════════════════════════════════════════
-         4. AUTORES (Con biografías desplegables)
-         ═══════════════════════════════════════════ -->
-    
-        <section style="margin-bottom: var(--space-12);">
-            <!-- Título de la sección -->
-            <div class="ornament-divider" style="margin-bottom: var(--space-6);">
-                <span class="ornament-symbol">✦</span>
-            </div>
-            
-            <h4 style="text-align: center; 
-                       color: var(--color-gray-light); 
-                       font-family: var(--font-sans); 
-                       font-weight: 400; 
-                       font-size: var(--text-sm); 
-                       margin-bottom: var(--space-8); 
-                       letter-spacing: 0.15em; 
-                       text-transform: uppercase;">
-                Una obra de
-            </h4>
-            
-            <div style="display: flex; flex-direction: column; gap: var(--space-5); max-width: 800px; margin: 0 auto;">
-                
-                <!-- ═══════════════════════════════════════════
-                     AUTOR 1: YOELDIS CASTILLO QUIALA
-                     ═══════════════════════════════════════════ -->
-                <div class="author-card" style="background: var(--color-black-soft); 
-                                                border: 1px solid var(--color-gold-dark);
-                                                border-radius: var(--radius-xl);
-                                                overflow: hidden;
-                                                transition: all var(--transition-base);">
-                    
-                    <!-- Cabecera siempre visible -->
-                    <div style="display: flex; 
-                                align-items: center; 
-                                gap: var(--space-4); 
-                                padding: var(--space-5) var(--space-6);">
-                        <img src="assets/images/autor-yoeldis.jpg" 
-                             alt="Yoeldis Castillo Quiala" 
-                             style="width: 70px; 
-                                    height: 70px; 
-                                    border-radius: var(--radius-full); 
-                                    object-fit: cover;
-                                    border: 2px solid var(--color-gold-primary);
-                                    box-shadow: 0 0 15px rgba(201,169,97,0.3);
-                                    flex-shrink: 0;">
-                        <div style="flex: 1; min-width: 0;">
-                            <p style="margin: 0; 
-                                      font-family: var(--font-serif-primary); 
-                                      font-weight: 600; 
-                                      color: var(--color-gold-primary); 
-                                      font-size: var(--text-lg);">
-                                Yoeldis Castillo Quiala
-                            </p>
-                            <p style="margin: var(--space-1) 0 0 0; 
-                                      font-size: var(--text-xs); 
-                                      color: var(--color-gray-light); 
-                                      font-style: italic;">
-                                Máster en Dirección y Licenciado en Psicología
-                            </p>
-                        </div>
-                    </div>
-    
-                    <!-- Biografía desplegable -->
-                    <details class="author-details">
-                        <summary class="author-summary">
-                            <span>Leer biografía completa</span>
-                            <i class="fa-solid fa-chevron-down author-arrow"></i>
-                        </summary>
-                        
-                        <div class="author-bio-content" style="padding: 0 var(--space-6) var(--space-6) var(--space-6);">
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin-bottom: var(--space-4);">
-                                Yoeldis Castillo Quiala es Máster en Dirección y Licenciado en Psicología. Su formación académica y experiencia profesional le han permitido profundizar en el estudio del comportamiento humano, la personalidad y los procesos que influyen en la toma de decisiones, integrando el conocimiento psicológico con una visión práctica orientada al desarrollo personal y organizacional.
-                            </p>
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin-bottom: var(--space-4);">
-                                A lo largo de su trayectoria ha ampliado su preparación mediante el análisis de diferentes enfoques de la psicología y las ciencias del comportamiento, con especial interés en la comprensión de las diferencias individuales, el potencial humano y las herramientas que favorecen el crecimiento personal. Su trabajo se caracteriza por trasladar conceptos complejos a un lenguaje claro, accesible y aplicable a la vida cotidiana.
-                            </p>
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin: 0;
-                                      font-style: italic;
-                                      border-left: 2px solid var(--color-gold-primary);
-                                      padding-left: var(--space-4);">
-                                En <em>¿Por qué soy así?</em> aporta el rigor de su formación y su experiencia en el análisis de la conducta humana, contribuyendo a ofrecer al lector una obra que invita a conocerse mejor, comprender las propias fortalezas y áreas de mejora, y desarrollar relaciones más sanas y conscientes con los demás.
-                            </p>
-                        </div>
-                    </details>
-                </div>
-    
-                <!-- ═══════════════════════════════════════════
-                     AUTOR 2: JUNIOR OSMANY CORONEL DURÁN
-                     ═══════════════════════════════════════════ -->
-                <div class="author-card" style="background: var(--color-black-soft); 
-                                                border: 1px solid var(--color-gold-dark);
-                                                border-radius: var(--radius-xl);
-                                                overflow: hidden;
-                                                transition: all var(--transition-base);">
-                    
-                    <!-- Cabecera siempre visible -->
-                    <div style="display: flex; 
-                                align-items: center; 
-                                gap: var(--space-4); 
-                                padding: var(--space-5) var(--space-6);">
-                        <img src="assets/images/autor-junior.jpg" 
-                             alt="Junior Osmany Coronel Durán" 
-                             style="width: 70px; 
-                                    height: 70px; 
-                                    border-radius: var(--radius-full); 
-                                    object-fit: cover;
-                                    border: 2px solid var(--color-gold-primary);
-                                    box-shadow: 0 0 15px rgba(201,169,97,0.3);
-                                    flex-shrink: 0;">
-                        <div style="flex: 1; min-width: 0;">
-                            <p style="margin: 0; 
-                                      font-family: var(--font-serif-primary); 
-                                      font-weight: 600; 
-                                      color: var(--color-gold-primary); 
-                                      font-size: var(--text-lg);">
-                                Junior Osmany Coronel Durán
-                            </p>
-                            <p style="margin: var(--space-1) 0 0 0; 
-                                      font-size: var(--text-xs); 
-                                      color: var(--color-gray-light); 
-                                      font-style: italic;">
-                                Escritor y Licenciado en Derecho
-                            </p>
-                        </div>
-                    </div>
-    
-                    <!-- Biografía desplegable -->
-                    <details class="author-details">
-                        <summary class="author-summary">
-                            <span>Leer biografía completa</span>
-                            <i class="fa-solid fa-chevron-down author-arrow"></i>
-                        </summary>
-                        
-                        <div class="author-bio-content" style="padding: 0 var(--space-6) var(--space-6) var(--space-6);">
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin-bottom: var(--space-4);">
-                                Junior Osmany Coronel Durán es escritor y licenciado en Derecho. Ha complementado su formación con estudios de posgrado en Psicología Jurídica, Psicología Aplicada, Administración de Empresas e Idioma Inglés, disciplinas que han enriquecido su comprensión del ser humano e influido en el enfoque de sus obras.
-                            </p>
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin-bottom: var(--space-4);">
-                                En 2006 participó en la antología <em>Para subir al cielo</em>, compilada por la reconocida escritora cubana Aida Bahr y publicada por Editorial Oriente, una experiencia que enalteció su trayectoria como narrador y reafirmó su compromiso con la creación literaria. En 2015 fue incluido entre los jóvenes narradores de Santiago de Cuba en la obra <em>Santiago Literario</em>.
-                            </p>
-                            <p style="color: var(--color-white-soft); 
-                                      font-size: var(--text-sm); 
-                                      line-height: 1.8; 
-                                      margin: 0;
-                                      font-style: italic;
-                                      border-left: 2px solid var(--color-gold-primary);
-                                      padding-left: var(--space-4);">
-                                Convencido de que los libros tienen el poder de sembrar ideas que acompañan a las personas durante toda la vida, escribe para niños y adultos con el propósito de crear historias y conocimientos que inspiren, enseñen y dejen una huella positiva en la memoria y el corazón de sus lectores.
-                            </p>
-                        </div>
-                    </details>
-                </div>
-    
-            </div>
-        </section>
-
-<style>
-    /* Estilos de las tarjetas de autores */
-    .author-card:hover {
-        border-color: var(--color-gold-primary);
-        box-shadow: 0 0 20px rgba(201,169,97,0.15);
-    }
-    
-    /* Estilos del desplegable de biografía */
-    .author-details {
-        border-top: 1px solid rgba(201,169,97,0.2);
-    }
-    
-    .author-summary {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding: var(--space-4) var(--space-6);
-        cursor: pointer;
-        color: var(--color-gold-light);
-        font-family: var(--font-sans);
-        font-size: var(--text-sm);
-        font-weight: 500;
-        list-style: none;
-        user-select: none;
-        transition: all var(--transition-fast);
-    }
-    
-    .author-summary:hover {
-        background: rgba(201,169,97,0.05);
-        color: var(--color-gold-primary);
-    }
-    
-    .author-summary::-webkit-details-marker {
-        display: none;
-    }
-    
-    .author-arrow {
-        transition: transform var(--transition-base);
-        font-size: var(--text-xs);
-    }
-    
-    .author-details[open] .author-arrow {
-        transform: rotate(180deg);
-    }
-    
-    .author-bio-content {
-        animation: fadeSlideDown 0.4s ease;
-    }
-    
-    /* Responsive */
-    @media (max-width: 480px) {
-        .author-card > div:first-child {
-            padding: var(--space-4) var(--space-5);
-        }
-        .author-summary {
-            padding: var(--space-3) var(--space-5);
-        }
-        .author-bio-content {
-            padding: 0 var(--space-5) var(--space-5) var(--space-5);
-        }
-    }
-</style>
+    </div>
 
     <!-- ═══════════════════════════════════════════
-         5. CTA FINAL: INVITACIÓN AL TEST
+         3. CTA DEL TEST (2da Sección - Versión Completa)
          ═══════════════════════════════════════════ -->
-    
     <section class="test-cta-container" style="background: linear-gradient(135deg, var(--color-black-soft) 0%, rgba(201,169,97,0.05) 100%); 
                                                 border: 2px solid var(--color-gold-primary);
                                                 border-radius: var(--radius-xl);
                                                 padding: var(--space-10) var(--space-6);
-                                                margin-bottom: var(--space-8);
+                                                margin-bottom: var(--space-6);
                                                 text-align: center;
                                                 box-shadow: 0 10px 40px rgba(201,169,97,0.2);
                                                 position: relative;
@@ -714,122 +179,174 @@
         </p>
     </section>
 
-<style>
-    /* Efecto hover en el contenedor */
-    .test-cta-container:hover {
-        border-color: var(--color-gold-light);
-        box-shadow: 0 15px 50px rgba(201,169,97,0.3);
-    }
-    
-    /* Efecto hover en el botón */
-    .test-cta-container .btn-gold:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 35px rgba(201,169,97,0.7);
-    }
-    
-    /* Responsive */
-    @media (max-width: 768px) {
-        .test-cta-container {
-            padding: var(--space-8) var(--space-5);
-        }
+    <!-- ═══════════════════════════════════════════
+         4. PROMO DEL LIBRO (3ra Sección)
+         ═══════════════════════════════════════════ -->
+    <div class="book-promo-container" style="background: var(--color-black-soft); border: 2px solid var(--color-gold-dark); border-radius: var(--radius-xl); padding: var(--space-6); margin-bottom: var(--space-6); box-shadow: 0 10px 30px rgba(0,0,0,0.3); transition: all var(--transition-base);">
         
-        .test-cta-container > div:nth-child(4) {
-            grid-template-columns: 1fr;
-            gap: var(--space-6);
-        }
-    }
-    
-    @media (max-width: 480px) {
-        .test-cta-container .btn-gold {
-            padding: var(--space-4) var(--space-6);
-            font-size: var(--text-base);
-        }
-    }
-</style>
+        <div style="display: flex; gap: var(--space-5); align-items: center; margin-bottom: var(--space-5); flex-wrap: wrap;">
+            <div style="flex-shrink: 0;">
+                <img src="assets/images/portada-libro.jpg" alt="Portada del libro" style="width: 160px; height: auto; border-radius: var(--radius-lg); box-shadow: 0 8px 25px rgba(201,169,97,0.3); border: 2px solid var(--color-gold-dark);">
+            </div>
+            <div style="flex: 1; min-width: 200px;">
+                <h2 style="font-family: var(--font-serif-primary); color: var(--color-gold-primary); font-size: var(--text-xl); margin-bottom: var(--space-2); letter-spacing: 0.05em;">
+                    ¿Por qué soy así?
+                </h2>
+                <p style="color: var(--color-gray-light); font-family: var(--font-serif-secondary); font-size: var(--text-sm); font-style: italic; margin-bottom: var(--space-4); line-height: 1.6;">
+                    Las 8 dimensiones que explican tu forma de pensar, sentir y actuar
+                </p>
+                <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.7; margin: 0;">
+                    <strong style="color: var(--color-gold-light);">¿Aún no tienes el libro?</strong> 
+                    Descubre más sobre esta obra que te ayudará a conocerte mejor y transformar tu vida.
+                </p>
+            </div>
+        </div>
+
+        <details class="book-details" style="border-top: 1px solid var(--color-gold-dark); padding-top: var(--space-5);">
+            <summary class="book-summary" style="display: flex; align-items: center; padding: var(--space-4); cursor: pointer; color: var(--color-gold-primary); font-family: var(--font-serif-primary); font-size: var(--text-base); font-weight: 600; letter-spacing: 0.05em; list-style: none; user-select: none; transition: all var(--transition-fast); border-radius: var(--radius-lg);">
+                <i class="fa-solid fa-book-open" style="margin-right: var(--space-3);"></i>
+                <span>Descubre el contenido del libro</span>
+                <i class="fa-solid fa-chevron-down book-arrow" style="margin-left: auto; transition: transform var(--transition-base); font-size: var(--text-sm);"></i>
+            </summary>
+            
+            <div class="book-content" style="margin-top: var(--space-5); animation: fadeSlideDown 0.4s ease;">
+                <div style="background: var(--color-black-deep); border-left: 3px solid var(--color-gold-primary); padding: var(--space-5); margin-bottom: var(--space-5); border-radius: 0 var(--radius-lg) var(--radius-lg) 0;">
+                    <h4 style="color: var(--color-gold-light); font-family: var(--font-serif-primary); font-size: var(--text-sm); margin-bottom: var(--space-3); letter-spacing: 0.1em; text-transform: uppercase;">Prólogo</h4>
+                    <p style="color: var(--color-white-soft); font-family: var(--font-serif-secondary); font-size: var(--text-sm); line-height: 1.8; font-style: italic; margin: 0;">
+                        Este libro nació de una pregunta simple pero profunda: <strong style="color: var(--color-gold-primary); font-style: normal;">¿Por qué soy así?</strong> Una interrogante que todos nos hemos hecho alguna vez, pero que pocas veces nos atrevemos a responder con honestidad.
+                        <br><br>
+                        A lo largo de estas páginas, te invitamos a emprender un viaje de autoconocimiento a través de 8 dimensiones esenciales que explican tu forma de pensar, sentir y actuar. No encontrarás etiquetas ni juicios, sino un espejo para mirarte con claridad y compasión.
+                        <br><br>
+                        Porque comprenderte no es el final del camino. Es el comienzo de una vida más consciente.
+                    </p>
+                </div>
+                <a href="https://www.amazon.com" target="_blank" rel="noopener noreferrer" class="btn btn-gold btn-lg" style="display: flex; align-items: center; justify-content: center; gap: var(--space-3); width: 100%; background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%); color: var(--color-black-deep); font-weight: 600; padding: var(--space-4) var(--space-6); border-radius: var(--radius-lg); text-decoration: none; box-shadow: 0 4px 15px rgba(201,169,97,0.4); transition: all var(--transition-base);">
+                    <i class="fa-brands fa-amazon"></i> Obtener en Amazon
+                </a>
+            </div>
+        </details>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+         5. AUTORES (4ta Sección)
+         ═══════════════════════════════════════════ -->
+    <section style="margin-bottom: var(--space-12);">
+        <div class="ornament-divider" style="margin-bottom: var(--space-6);">
+            <span class="ornament-symbol">✦</span>
+        </div>
+        
+        <h4 style="text-align: center; color: var(--color-gray-light); font-family: var(--font-sans); font-weight: 400; font-size: var(--text-sm); margin-bottom: var(--space-8); letter-spacing: 0.15em; text-transform: uppercase;">
+            Conoce a los autores
+        </h4>
+        
+        <div style="display: flex; flex-direction: column; gap: var(--space-5); max-width: 800px; margin: 0 auto;">
+            
+            <!-- Autor 1: Yoeldis -->
+            <div class="author-card" style="background: var(--color-black-soft); border: 1px solid var(--color-gold-dark); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base);">
+                <div style="display: flex; align-items: center; gap: var(--space-4); padding: var(--space-5) var(--space-6);">
+                    <img src="assets/images/autor-yoeldis.jpg" alt="Yoeldis Castillo Quiala" style="width: 70px; height: 70px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--color-gold-primary); box-shadow: 0 0 15px rgba(201,169,97,0.3); flex-shrink: 0;">
+                    <div style="flex: 1; min-width: 0;">
+                        <p style="margin: 0; font-family: var(--font-serif-primary); font-weight: 600; color: var(--color-gold-primary); font-size: var(--text-lg);">Yoeldis Castillo Quiala</p>
+                        <p style="margin: var(--space-1) 0 0 0; font-size: var(--text-xs); color: var(--color-gray-light); font-style: italic;">Máster en Dirección y Licenciado en Psicología</p>
+                    </div>
+                </div>
+                <details class="author-details" style="border-top: 1px solid rgba(201,169,97,0.2);">
+                    <summary class="author-summary" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6); cursor: pointer; color: var(--color-gold-light); font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500; list-style: none; user-select: none; transition: all var(--transition-fast);">
+                        <span>Leer síntesis biográfica</span>
+                        <i class="fa-solid fa-chevron-down author-arrow" style="transition: transform var(--transition-base); font-size: var(--text-xs);"></i>
+                    </summary>
+                    <div class="author-bio-content" style="padding: 0 var(--space-6) var(--space-6) var(--space-6); animation: fadeSlideDown 0.4s ease;">
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin-bottom: var(--space-4);">Yoeldis Castillo Quiala es Máster en Dirección y Licenciado en Psicología. Su formación académica y experiencia profesional le han permitido profundizar en el estudio del comportamiento humano, la personalidad y los procesos que influyen en la toma de decisiones, integrando el conocimiento psicológico con una visión práctica orientada al desarrollo personal y organizacional.</p>
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin-bottom: var(--space-4);">A lo largo de su trayectoria ha ampliado su preparación mediante el análisis de diferentes enfoques de la psicología y las ciencias del comportamiento, con especial interés en la comprensión de las diferencias individuales, el potencial humano y las herramientas que favorecen el crecimiento personal. Su trabajo se caracteriza por trasladar conceptos complejos a un lenguaje claro, accesible y aplicable a la vida cotidiana.</p>
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin: 0; font-style: italic; border-left: 2px solid var(--color-gold-primary); padding-left: var(--space-4);">En <em>¿Por qué soy así?</em> aporta el rigor de su formación y su experiencia en el análisis de la conducta humana, contribuyendo a ofrecer al lector una obra que invita a conocerse mejor, comprender las propias fortalezas y áreas de mejora, y desarrollar relaciones más sanas y conscientes con los demás.</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Autor 2: Junior -->
+            <div class="author-card" style="background: var(--color-black-soft); border: 1px solid var(--color-gold-dark); border-radius: var(--radius-xl); overflow: hidden; transition: all var(--transition-base);">
+                <div style="display: flex; align-items: center; gap: var(--space-4); padding: var(--space-5) var(--space-6);">
+                    <img src="assets/images/autor-junior.jpg" alt="Junior Osmany Coronel Durán" style="width: 70px; height: 70px; border-radius: var(--radius-full); object-fit: cover; border: 2px solid var(--color-gold-primary); box-shadow: 0 0 15px rgba(201,169,97,0.3); flex-shrink: 0;">
+                    <div style="flex: 1; min-width: 0;">
+                        <p style="margin: 0; font-family: var(--font-serif-primary); font-weight: 600; color: var(--color-gold-primary); font-size: var(--text-lg);">Junior Osmany Coronel Durán</p>
+                        <p style="margin: var(--space-1) 0 0 0; font-size: var(--text-xs); color: var(--color-gray-light); font-style: italic;">Escritor y Licenciado en Derecho</p>
+                    </div>
+                </div>
+                <details class="author-details" style="border-top: 1px solid rgba(201,169,97,0.2);">
+                    <summary class="author-summary" style="display: flex; align-items: center; justify-content: space-between; padding: var(--space-4) var(--space-6); cursor: pointer; color: var(--color-gold-light); font-family: var(--font-sans); font-size: var(--text-sm); font-weight: 500; list-style: none; user-select: none; transition: all var(--transition-fast);">
+                        <span>Leer síntesis biográfica</span>
+                        <i class="fa-solid fa-chevron-down author-arrow" style="transition: transform var(--transition-base); font-size: var(--text-xs);"></i>
+                    </summary>
+                    <div class="author-bio-content" style="padding: 0 var(--space-6) var(--space-6) var(--space-6); animation: fadeSlideDown 0.4s ease;">
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin-bottom: var(--space-4);">Junior Osmany Coronel Durán es escritor y licenciado en Derecho. Ha complementado su formación con estudios de posgrado en Psicología Jurídica, Psicología Aplicada, Administración de Empresas e Idioma Inglés, disciplinas que han enriquecido su comprensión del ser humano e influido en el enfoque de sus obras.</p>
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin-bottom: var(--space-4);">En 2006 participó en la antología <em>Para subir al cielo</em>, compilada por la reconocida escritora cubana Aida Bahr y publicada por Editorial Oriente, una experiencia que enalteció su trayectoria como narrador y reafirmó su compromiso con la creación literaria. En 2015 fue incluido entre los jóvenes narradores de Santiago de Cuba en la obra <em>Santiago Literario</em>.</p>
+                        <p style="color: var(--color-white-soft); font-size: var(--text-sm); line-height: 1.8; margin: 0; font-style: italic; border-left: 2px solid var(--color-gold-primary); padding-left: var(--space-4);">Convencido de que los libros tienen el poder de sembrar ideas que acompañan a las personas durante toda la vida, escribe para niños y adultos con el propósito de crear historias y conocimientos que inspiren, enseñen y dejen una huella positiva en la memoria y el corazón de sus lectores.</p>
+                    </div>
+                </details>
+            </div>
+        </div>
+    </section>
+
+    <!-- ═══════════════════════════════════════════
+         6. FOOTER: DESARROLLADORES
+         ═══════════════════════════════════════════ -->
+    <footer style="text-align: center; padding: var(--space-8) var(--space-4); border-top: 1px solid var(--color-gold-dark); margin-top: var(--space-8);">
+        <div class="ornament-divider" style="margin-bottom: var(--space-4);">
+            <span class="ornament-symbol" style="font-size: var(--text-sm);">✦</span>
+        </div>
+        <p style="color: var(--color-gray-light); font-size: var(--text-xs); margin-bottom: var(--space-2); letter-spacing: 0.05em;">
+            Experiencia interactiva desarrollada por
+        </p>
+        <p style="color: var(--color-gold-primary); font-family: var(--font-serif-primary); font-size: var(--text-lg); font-weight: 600; margin-bottom: var(--space-2); letter-spacing: 0.05em;">
+            Elton Olivares
+        </p>
+        <p style="color: var(--color-gray-light); font-size: var(--text-xs); letter-spacing: 0.15em; text-transform: uppercase; margin: 0;">
+            Innovación • Diseño • Tecnología
+        </p>
+    </footer>
 
 </section>
 
 <style>
-    /* ═══════════════════════════════════════════
-       ESTILOS DEL DESPLEGABLE DEL LIBRO
-       ═══════════════════════════════════════════ */
-    
-    .book-promo-card {
-        background: var(--color-black-soft);
-        border: 1px solid var(--color-gold-dark);
-        border-radius: var(--radius-xl);
-        overflow: hidden;
-        transition: all var(--transition-base);
+    /* Estilos compartidos para los desplegables */
+    .install-promo-container:hover, .book-promo-container:hover {
+        border-color: var(--color-gold-primary);
+        box-shadow: 0 15px 40px rgba(201,169,97,0.2);
     }
-    
-    .book-promo-card:hover {
+    .book-summary:hover, .author-summary:hover {
+        background: rgba(201,169,97,0.05);
+    }
+    .book-summary::-webkit-details-marker, .author-summary::-webkit-details-marker {
+        display: none;
+    }
+    .book-details[open] .book-arrow, .author-details[open] .author-arrow {
+        transform: rotate(180deg);
+    }
+    .author-card:hover {
         border-color: var(--color-gold-primary);
         box-shadow: 0 0 20px rgba(201,169,97,0.15);
     }
-    
-    .book-promo-summary {
-        display: flex;
-        align-items: center;
-        padding: var(--space-5) var(--space-6);
-        cursor: pointer;
-        color: var(--color-gold-primary);
-        font-family: var(--font-serif-primary);
-        font-size: var(--text-lg);
-        font-weight: 600;
-        letter-spacing: 0.05em;
-        list-style: none;
-        user-select: none;
-        transition: all var(--transition-fast);
-    }
-    
-    .book-promo-summary:hover {
-        background: rgba(201,169,97,0.05);
-    }
-    
-    .book-promo-summary::-webkit-details-marker {
-        display: none;
-    }
-    
-    .book-promo-arrow {
-        margin-left: auto;
-        transition: transform var(--transition-base);
-        font-size: var(--text-sm);
-    }
-    
-    .book-promo-card[open] .book-promo-arrow {
-        transform: rotate(180deg);
-    }
-    
-    .book-promo-content {
-        padding: 0 var(--space-6) var(--space-6) var(--space-6);
-        animation: fadeSlideDown 0.4s ease;
-    }
-    
-    @keyframes fadeSlideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    }
-    
-    /* Botón dorado hover */
     .btn-gold:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(201,169,97,0.6);
     }
+    @keyframes fadeSlideDown {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
     
     /* Responsive */
+    @media (max-width: 768px) {
+        .install-promo-container > div, .book-promo-container > div:first-child {
+            flex-direction: column;
+            text-align: center;
+        }
+        .install-promo-container > div > div:last-child, .book-promo-container > div:first-child > div:last-child {
+            max-width: 100%;
+        }
+    }
     @media (max-width: 480px) {
-        .book-promo-summary {
-            font-size: var(--text-base);
-            padding: var(--space-4) var(--space-5);
-        }
-        .book-promo-content {
-            padding: 0 var(--space-5) var(--space-5) var(--space-5);
-        }
+        .install-promo-container img, .book-promo-container img { width: 100px !important; height: 100px !important; }
+        .author-card > div:first-child { padding: var(--space-4) var(--space-5); }
     }
 </style>

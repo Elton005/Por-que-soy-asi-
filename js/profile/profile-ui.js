@@ -1,17 +1,17 @@
 /**
- * Profile UI Manager - Versión Completa
- * Muestra el último resultado completo del test con todas las secciones
+ * Profile UI Manager - Versión Simplificada
+ * Muestra el último resultado completo con estadísticas básicas
  */
 
 const ProfileUI = {
     init() {
-        console.log(' ProfileUI iniciado');
+        console.log('📋 ProfileUI iniciado');
         this.loadProfile();
     },
 
     loadProfile() {
         const result = window.Storage.get('testResult');
-        console.log('📦 Resultado del test:', result);
+        console.log(' Resultado del test:', result);
 
         const emptyState = document.getElementById('profile-empty');
         const contentState = document.getElementById('profile-content');
@@ -55,7 +55,12 @@ const ProfileUI = {
             descEl.textContent = perfil.descripcion || '';
         }
 
-        // 5. Actualizar fortalezas globales
+        // 5. Calcular y mostrar estadísticas
+        if (result.dimensionScores) {
+            this.renderStats(result.dimensionScores);
+        }
+
+        // 6. Actualizar fortalezas globales
         const strengthsEl = document.getElementById('profile-strengths');
         if (strengthsEl && perfil.fortalezas) {
             strengthsEl.innerHTML = perfil.fortalezas.map(f => 
@@ -63,7 +68,7 @@ const ProfileUI = {
             ).join('');
         }
 
-        // 6. Actualizar puntos ciegos globales
+        // 7. Actualizar puntos ciegos globales
         const blindspotsEl = document.getElementById('profile-blindspots');
         if (blindspotsEl && perfil.puntosCiegos) {
             blindspotsEl.innerHTML = perfil.puntosCiegos.map(b => 
@@ -71,34 +76,61 @@ const ProfileUI = {
             ).join('');
         }
 
-        // 7. Actualizar recomendación
+        // 8. Actualizar recomendación
         const recEl = document.getElementById('profile-recommendation');
         if (recEl) {
             recEl.textContent = perfil.recomendacion || '';
         }
 
-        // 8. Actualizar pregunta de reflexión
+        // 9. Actualizar pregunta de reflexión
         const reflEl = document.getElementById('profile-reflection');
         if (reflEl) {
             reflEl.textContent = perfil.preguntaReflexion || '';
         }
 
-        // 9. Generar gráfico radar
+        // 10. Generar gráfico radar
         if (result.dimensionScores && typeof window.renderRadarChart === 'function') {
             window.renderRadarChart(result.dimensionScores, 'profile-radar-chart');
         }
 
-        // 10. Generar tarjetas de las 8 dimensiones detalladas
+        // 11. Generar tarjetas de las 8 dimensiones detalladas
         if (result.dimensionScores && typeof window.renderDimensionCards === 'function') {
             window.renderDimensionCards(result.dimensionScores, 'profile-dimensions-container');
         }
 
-        // 11. Generar perfil integrador
+        // 12. Generar perfil integrador
         if (result.dimensionScores && typeof window.renderIntegrativeProfile === 'function') {
             window.renderIntegrativeProfile(result.dimensionScores, 'profile-integrative-container');
         }
 
+        // 13. Configurar botón de borrar datos
+        this.setupClearButton();
+
         console.log('✅ Perfil completo cargado correctamente');
+    },
+
+    /**
+     * Muestra solo el total de tests realizados
+     */
+    renderStats(dimensionScores) {
+        const statTests = document.getElementById('stat-tests');
+        if (statTests) statTests.textContent = '1';
+    },
+
+    /**
+     * Configura el botón de borrar datos
+     */
+    setupClearButton() {
+        const clearBtn = document.getElementById('clear-data-btn');
+        if (clearBtn) {
+            clearBtn.onclick = () => {
+                if (confirm('¿Estás seguro de que quieres borrar todos tus datos? Esta acción no se puede deshacer.')) {
+                    window.Storage.remove('testResult');
+                    window.Router.navigate('home');
+                    location.reload();
+                }
+            };
+        }
     }
 };
 

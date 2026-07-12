@@ -106,6 +106,7 @@
     max-width: var(--max-width-content);
     margin: 0 auto;
     width: 100%;
+    box-sizing: border-box;
 }
 
 .section {
@@ -139,6 +140,7 @@
     border-bottom: 1px solid var(--color-gold-dark);
     z-index: calc(var(--z-fixed) + 1);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+    box-sizing: border-box;
 }
 
 .app-header-content {
@@ -150,6 +152,7 @@
     align-items: center;
     justify-content: space-between;
     gap: var(--space-4);
+    box-sizing: border-box;
 }
 
 .app-header-brand {
@@ -158,6 +161,7 @@
     gap: var(--space-3);
     flex: 1;
     min-width: 0;
+    overflow: hidden;
 }
 
 .app-header-logo {
@@ -185,6 +189,7 @@
     flex-direction: column;
     min-width: 0;
     overflow: hidden;
+    flex: 1;
 }
 
 .app-header-title {
@@ -741,20 +746,102 @@
 }
 
 /* =========================================
-   RESPONSIVE - PANTALLAS MUY PEQUEÑAS (< 360px)
+   RESPONSIVE - PANTALLAS MUY PEQUEÑAS (< 430px)
+   FIX: Header optimizado para móvil pequeño
+   ========================================= */
+
+@media (max-width: 430px) {
+    .app-header {
+        height: 56px;
+    }
+    
+    .app-header-content {
+        padding: 0 var(--space-3);
+        gap: var(--space-2);
+    }
+    
+    .app-header-logo {
+        width: 32px;
+        height: 32px;
+    }
+    
+    .app-header-brand {
+        gap: var(--space-2);
+    }
+    
+    .app-header-title {
+        font-size: 0.85rem;
+        letter-spacing: 0;
+    }
+    
+    .app-header-subtitle {
+        font-size: 0.65rem;
+    }
+    
+    .app-container {
+        padding-top: calc(56px + var(--safe-area-top));
+    }
+    
+    .main-content {
+        padding: var(--space-4) var(--space-3);
+    }
+}
+
+/* =========================================
+   RESPONSIVE - PANTALLAS ULTRA PEQUEÑAS (< 360px)
    ========================================= */
 
 @media (max-width: 360px) {
+    .app-header {
+        height: 52px;
+    }
+    
     .app-header-subtitle {
         display: none;
     }
 
     .app-header-logo {
-        width: 36px;
-        height: 36px;
+        width: 28px;
+        height: 28px;
     }
 
     .app-header-title {
-        font-size: var(--text-sm);
+        font-size: 0.8rem;
     }
+    
+    .app-header-content {
+        padding: 0 var(--space-2);
+        gap: var(--space-2);
+    }
+    
+    .app-container {
+        padding-top: calc(52px + var(--safe-area-top));
+    }
+}
+
+/* =========================================
+   FIX: Prevenir desbordamiento en contenido dinámico
+   ========================================= */
+
+#app {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+#app section {
+    max-width: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Asegurar que las imágenes no se salgan */
+#app img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Forzar word-wrap en todo el contenido dinámico */
+#app * {
+    max-width: 100%;
+    box-sizing: border-box;
 }
