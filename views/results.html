@@ -1,78 +1,47 @@
 <section class="main-content fade-in-up">
     
     <!-- ══════════════════════════════════════════
-         1. HEADER SIMPLIFICADO (Sin logo duplicado)
+         1. HEADER
          ══════════════════════════════════════════ -->
     <header style="text-align: center; margin-bottom: var(--space-4);">
         <h1 style="color: var(--color-gold-primary); 
                    font-family: var(--font-serif-primary); 
                    font-size: clamp(1.2rem, 4vw, 1.6rem); 
                    margin: 0 0 var(--space-2) 0; 
-                   line-height: 1.3; 
-                   letter-spacing: 0.02em;">
+                   line-height: 1.3;">
             Tu Mapa de Autoconocimiento
         </h1>
         <p style="color: var(--color-gray-light); 
                   font-size: 0.75rem; 
-                  line-height: 1.4; 
                   margin: 0;">
             Basado en tus respuestas honestas
         </p>
     </header>
 
     <!-- ══════════════════════════════════════════
-         2. PERFIL PREDOMINANTE
-         ══════════════════════════════════════════ -->
-    <article class="card card-gold" style="margin-bottom: var(--space-4); padding: var(--space-4);">
-        <h3 style="color: var(--color-gold-primary); 
-                   margin-bottom: var(--space-2); 
-                   font-family: var(--font-serif-primary); 
-                   font-size: 1rem;">
-            Perfil Predominante
-        </h3>
-        <h2 id="result-profile-name" 
-            style="color: var(--color-gold-primary); 
-                   font-size: 1.2rem; 
-                   margin-bottom: var(--space-2);
-                   line-height: 1.3;">
-        </h2>
-        <p id="result-description" 
-           style="color: var(--color-white-soft); 
-                  line-height: 1.5; 
-                  font-size: 0.85rem;">
-        </p>
-    </article>
-
-    <!-- ═══════════════════════════════════════════
-         3. GRÁFICO RADAR
+         2. GRÁFICO DE LAS 8 DIMENSIONES
          ═══════════════════════════════════════════ -->
-    <article class="card" style="margin-bottom: var(--space-4); padding: var(--space-4);">
+    <article class="card" style="margin-bottom: var(--space-5); padding: var(--space-5);">
         <h3 style="color: var(--color-gold-primary); 
-                   margin-bottom: var(--space-3); 
+                   margin-bottom: var(--space-4); 
                    text-align: center; 
                    font-family: var(--font-serif-primary); 
-                   font-size: 0.95rem;">
+                   font-size: 1.1rem;">
             Tus 8 Dimensiones
         </h3>
-        <div id="radar-chart-container" style="width: 100%; max-width: 280px; margin: 0 auto;">
+        <div id="radar-chart-container" style="width: 100%; max-width: 320px; margin: 0 auto;">
         </div>
     </article>
 
-    <!-- ══════════════════════════════════════════
-         4. PERFIL INTEGRADOR
-         ══════════════════════════════════════════ -->
-    <div id="integrative-profile-container" style="margin-bottom: var(--space-4);">
-    </div>
-
     <!-- ═══════════════════════════════════════════
-         5. LAS 8 DIMENSIONES EN DETALLE
+         3. ANÁLISIS DETALLADO POR DIMENSIÓN
          ═══════════════════════════════════════════ -->
-    <section style="margin-bottom: var(--space-4);">
+    <section style="margin-bottom: var(--space-5);">
         <h3 style="text-align: center; 
                    color: var(--color-gold-primary); 
                    font-family: var(--font-serif-primary); 
-                   font-size: 1rem; 
-                   margin-bottom: var(--space-3);">
+                   font-size: 1.1rem; 
+                   margin-bottom: var(--space-4);">
             Análisis Detallado
         </h3>
         
@@ -80,77 +49,122 @@
         </div>
     </section>
 
-    <!-- ══════════════════════════════════════════
-         6. FORTALEZAS Y PUNTOS CIEGOS
+    <!-- ═══════════════════════════════════════════
+         4. TU PERFIL INTEGRADOR (Subtítulo llamativo)
          ═══════════════════════════════════════════ -->
-    <div style="display: grid; gap: var(--space-3); margin-bottom: var(--space-4);">
-        <div class="card" style="padding: var(--space-3);">
+    <div style="text-align: center; margin-bottom: var(--space-4);">
+        <div class="ornament-divider" style="margin-bottom: var(--space-3);">
+            <span class="ornament-symbol">✦</span>
+        </div>
+        <h2 style="color: var(--color-gold-primary); 
+                   font-family: var(--font-serif-primary); 
+                   font-size: clamp(1.3rem, 4vw, 1.8rem); 
+                   margin: 0; 
+                   letter-spacing: 0.05em;
+                   text-transform: uppercase;">
+            Tu Perfil Integrador
+        </h2>
+    </div>
+
+    <!-- ═══════════════════════════════════════════
+     5. PERFIL PREDOMINANTE
+     ══════════════════════════════════════════ -->
+    <article class="card card-gold" style="margin-bottom: var(--space-5); padding: var(--space-5);">
+        <h2 id="result-profile-name" 
+            style="color: var(--color-gold-primary); 
+                   font-family: var(--font-serif-primary);
+                   font-size: clamp(1.3rem, 4vw, 1.6rem); 
+                   margin: 0;
+                   line-height: 1.3;
+                   text-align: center;">
+        </h2>
+        <p id="result-description" 
+           style="color: var(--color-white-soft); 
+                  line-height: 1.6; 
+                  font-size: 0.9rem;
+                  margin-top: var(--space-3);
+                  text-align: center;">
+        </p>
+    </article>
+
+    <!-- ══════════════════════════════════════════
+         6. FORTALEZAS Y DEBILIDADES
+         ══════════════════════════════════════════ -->
+    <div style="display: grid; gap: var(--space-4); margin-bottom: var(--space-5);">
+        <div class="card" style="padding: var(--space-4);">
             <h4 style="color: var(--color-gold-light); 
-                       margin-bottom: var(--space-2); 
-                       font-size: 0.85rem;">✨ Tus Fortalezas</h4>
+                       margin-bottom: var(--space-3); 
+                       font-size: 0.95rem;">✨ Tus Fortalezas</h4>
             <ul id="result-strengths" 
                 style="color: var(--color-white-soft); 
                        padding-left: var(--space-4); 
-                       line-height: 1.4; 
-                       font-size: 0.8rem;
+                       line-height: 1.5; 
+                       font-size: 0.85rem;
                        margin: 0;">
             </ul>
         </div>
-        <div class="card" style="padding: var(--space-3);">
+        <div class="card" style="padding: var(--space-4);">
             <h4 style="color: var(--color-gold-light); 
-                       margin-bottom: var(--space-2); 
-                       font-size: 0.85rem;">🔍 Puntos Ciegos</h4>
+                       margin-bottom: var(--space-3); 
+                       font-size: 0.95rem;">🔍 Áreas de Crecimiento</h4>
             <ul id="result-blindspots" 
                 style="color: var(--color-white-soft); 
                        padding-left: var(--space-4); 
-                       line-height: 1.4; 
-                       font-size: 0.8rem;
+                       line-height: 1.5; 
+                       font-size: 0.85rem;
                        margin: 0;">
             </ul>
         </div>
     </div>
 
     <!-- ═══════════════════════════════════════════
-         7. RECOMENDACIÓN Y REFLEXIÓN
-         ═══════════════════════════════════════════ -->
-    <div>
-        <div class="card" 
-             style="background: var(--color-blue-mystic); 
-                    border: 1px solid var(--color-gold-dark); 
-                    margin-bottom: var(--space-3); 
-                    padding: var(--space-3);">
-            <h4 style="color: var(--color-gold-primary); 
-                       margin-bottom: var(--space-2); 
-                       font-size: 0.85rem;">🌱 Recomendación</h4>
-            <p id="result-recommendation" 
-               style="color: var(--color-white-soft); 
-                      font-style: italic; 
-                      line-height: 1.4; 
-                      font-size: 0.8rem;
-                      margin: 0;">
-            </p>
-        </div>
-
-        <div class="card" 
-             style="border: 1px dashed var(--color-gold-dark); 
-                    background: transparent; 
-                    margin-bottom: var(--space-6); 
-                    padding: var(--space-3);">
-            <h4 style="color: var(--color-gold-primary); 
-                       margin-bottom: var(--space-2); 
-                       font-size: 0.85rem;">💭 Para reflexionar</h4>
-            <p id="result-reflection-question" 
-               style="color: var(--color-white-soft); 
-                      line-height: 1.4; 
-                      font-size: 0.8rem; 
-                      font-weight: 500;
-                      margin: 0;">
-            </p>
-        </div>
+     7. ESTE ES TU CAMINO A SEGUIR
+     ═══════════════════════════════════════════ -->
+    <div class="card" 
+         style="background: var(--color-blue-mystic); 
+                border: 1px solid var(--color-gold-dark); 
+                margin-bottom: var(--space-4); 
+                padding: var(--space-4);
+                text-align: center;">
+        <h4 style="color: var(--color-gold-primary); 
+                   margin-bottom: var(--space-3); 
+                   font-size: 0.95rem;
+                   font-family: var(--font-serif-primary);
+                   letter-spacing: 0.03em;">
+            Este es tu camino a seguir
+        </h4>
+        <p id="result-recommendation" 
+           style="color: var(--color-white-soft); 
+                  font-style: italic; 
+                  line-height: 1.6; 
+                  font-size: 0.9rem;
+                  margin: 0;
+                  text-align: center;">
+        </p>
     </div>
 
-    <!-- ═══════════════════════════════════════════
-         8. BOTONES DE ACCIÓN
+    <!-- ══════════════════════════════════════════
+         8. PARA REFLEXIONAR
+         ═══════════════════════════════════════════ -->
+    <div class="card" 
+         style="border: 1px dashed var(--color-gold-dark); 
+                background: transparent; 
+                margin-bottom: var(--space-6); 
+                padding: var(--space-4);">
+        <h4 style="color: var(--color-gold-primary); 
+                   margin-bottom: var(--space-3); 
+                   font-size: 0.95rem;">💭 Para Reflexionar</h4>
+        <p id="result-reflection-question" 
+           style="color: var(--color-white-soft); 
+                  line-height: 1.6; 
+                  font-size: 0.9rem; 
+                  font-weight: 500;
+                  margin: 0;">
+        </p>
+    </div>
+
+    <!-- ══════════════════════════════════════════
+         9. BOTONES DE ACCIÓN
          ═══════════════════════════════════════════ -->
     <div style="display: flex; flex-direction: column; gap: var(--space-3);">
         
@@ -161,7 +175,7 @@
                        background: linear-gradient(135deg, var(--color-gold-light) 0%, var(--color-gold-primary) 50%, var(--color-gold-dark) 100%); 
                        color: var(--color-black-deep); 
                        font-weight: 600;
-                       padding: var(--space-3);
+                       padding: var(--space-4);
                        border: none;
                        border-radius: var(--radius-lg);
                        cursor: pointer;
@@ -196,46 +210,21 @@
     }
     
     @keyframes fadeInUp {
-        from {
-            opacity: 0;
-            transform: translateY(20px);
-        }
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
     }
     
     @media (max-width: 430px) {
-        .main-content {
-            padding: var(--space-3) var(--space-2);
-        }
-        
-        header h1 {
-            font-size: 1.1rem !important;
-        }
-        
-        header p {
-            font-size: 0.7rem !important;
-        }
-        
-        .card {
-            padding: var(--space-3) !important;
-        }
-        
-        #radar-chart-container {
-            max-width: 240px !important;
-        }
+        .main-content { padding: var(--space-3) var(--space-2); }
+        header h1 { font-size: 1.1rem !important; }
+        header p { font-size: 0.7rem !important; }
+        .card { padding: var(--space-3) !important; }
+        #radar-chart-container { max-width: 260px !important; }
     }
     
     @media (max-width: 360px) {
-        header h1 {
-            font-size: 1rem !important;
-        }
-        
-        #radar-chart-container {
-            max-width: 200px !important;
-        }
+        header h1 { font-size: 1rem !important; }
+        #radar-chart-container { max-width: 220px !important; }
     }
 </style>
 
